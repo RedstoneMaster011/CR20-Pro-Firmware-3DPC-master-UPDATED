@@ -22,6 +22,7 @@
 #pragma once
 
 #include "../core/macros.h" // for ENABLED
+#include "BuildNumber.h"
 
 /**
  * This file is the standard Marlin version identifier file.
@@ -38,20 +39,20 @@
   /**
    * Marlin release version identifier
    */
-  #define SHORT_BUILD_VERSION "v2.3"
+  #define SHORT_BUILD_VERSION "v2.3 - " BUILD_NUMBER_STRING
 
   /**
    * Verbose version identifier which should contain a reference to the location
    * from where the binary was downloaded or the source code was compiled.
    */
-  #define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION " (better negative value support)"
+  #define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION " (print ETA + negative value support)"
 
   /**
    * The STRING_DISTRIBUTION_DATE represents when the binary file was built,
    * here we define this default string as the date where the latest release
    * version was tagged.
    */
-  #define STRING_DISTRIBUTION_DATE "2026-07-11"
+  #define STRING_DISTRIBUTION_DATE "2026-07-13"
 
   /**
    * Required minimum Configuration.h and Configuration_adv.h file versions.

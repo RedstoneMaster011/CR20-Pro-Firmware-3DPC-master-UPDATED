@@ -37,7 +37,7 @@
  */
 
 // Change EEPROM version if the structure changes
-#define EEPROM_VERSION "V67"
+#define EEPROM_VERSION "V68"
 #define EEPROM_OFFSET 100
 
 // Check the integrity of data offsets.
@@ -47,6 +47,7 @@
 #include "configuration_store.h"
 
 #include "endstops.h"
+#include "motion.h"
 #include "planner.h"
 #include "stepper.h"
 #include "temperature.h"
@@ -334,6 +335,11 @@ typedef struct SettingsDataStruct {
     // This is a significant hardware change; don't reserve space when not present
     uint8_t extui_data[ExtUI::eeprom_data_size];
   #endif
+
+  //
+  // Negative axis movement
+  //
+  bool allow_negative_values;
 
 } SettingsData;
 
@@ -1234,6 +1240,19 @@ void MarlinSettings::postprocess() {
     #endif
 
     //
+    // Negative axis movement
+    //
+    {
+      _FIELD_TEST(allow_negative_values);
+      #if HAS_SOFTWARE_ENDSTOPS
+        EEPROM_WRITE(allow_negative_values);
+      #else
+        const bool allow_negative_values = false;
+        EEPROM_WRITE(allow_negative_values);
+      #endif
+    }
+
+    //
     // Validate CRC and Data Size
     //
     if (!eeprom_error) {
@@ -1283,8 +1302,10 @@ void MarlinSettings::postprocess() {
     uint16_t stored_crc;
     EEPROM_READ_ALWAYS(stored_crc);
 
+    const bool legacy_v67 = strncmp(stored_ver, "V67", 3) == 0;
+
     // Version has to match or defaults are used
-    if (strncmp(version, stored_ver, 3) != 0) {
+    if (!legacy_v67 && strncmp(version, stored_ver, 3) != 0) {
       if (stored_ver[3] != '\0') {
         stored_ver[0] = '?';
         stored_ver[1] = '\0';
@@ -2035,10 +2056,31 @@ void MarlinSettings::postprocess() {
         }
       #endif
 
-      eeprom_error = size_error(eeprom_index - (EEPROM_OFFSET));
+      //
+      // Negative axis movement
+      //
+      {
+        _FIELD_TEST(allow_negative_values);
+        if (legacy_v67) {
+          #if HAS_SOFTWARE_ENDSTOPS
+            if (!validating) allow_negative_values = false;
+          #endif
+        }
+        else {
+          bool stored_allow_negative_values;
+          EEPROM_READ(stored_allow_negative_values);
+          #if HAS_SOFTWARE_ENDSTOPS
+            if (!validating) allow_negative_values = stored_allow_negative_values;
+          #endif
+        }
+      }
+
+      const uint16_t read_size = eeprom_index - (EEPROM_OFFSET),
+                     expected_size = datasize() - (legacy_v67 ? sizeof(bool) : 0);
+      eeprom_error = read_size != expected_size;
       if (eeprom_error) {
         DEBUG_ECHO_START();
-        DEBUG_ECHOLNPAIR("Index: ", int(eeprom_index - (EEPROM_OFFSET)), " Size: ", datasize());
+        DEBUG_ECHOLNPAIR("Index: ", int(eeprom_index - (EEPROM_OFFSET)), " Size: ", expected_size);
       }
       else if (working_crc != stored_crc) {
         eeprom_error = true;
@@ -2047,7 +2089,7 @@ void MarlinSettings::postprocess() {
       }
       else if (!validating) {
         DEBUG_ECHO_START();
-        DEBUG_ECHO(version);
+        DEBUG_ECHO(stored_ver);
         DEBUG_ECHOLNPAIR(" stored settings retrieved (", eeprom_index - (EEPROM_OFFSET), " bytes; crc ", (uint32_t)working_crc, ")");
       }
 
@@ -2090,6 +2132,11 @@ void MarlinSettings::postprocess() {
       if (!validating) report();
     #endif
     EEPROM_FINISH();
+
+    if (!validating && !eeprom_error && legacy_v67) {
+      DEBUG_ECHO_MSG("Migrating EEPROM settings to " EEPROM_VERSION);
+      (void)save();
+    }
 
     return !eeprom_error;
   }
@@ -2510,6 +2557,10 @@ void MarlinSettings::reset() {
     for (uint8_t q = 0; q < COUNT(planner.filament_size); q++)
       planner.filament_size[q] = DEFAULT_NOMINAL_FILAMENT_DIA;
 
+  #endif
+
+  #if HAS_SOFTWARE_ENDSTOPS
+    allow_negative_values = false;
   #endif
 
   endstops.enable_globally(

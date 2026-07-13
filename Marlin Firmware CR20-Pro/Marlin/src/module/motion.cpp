@@ -449,7 +449,7 @@ void clean_up_after_endstop_or_probe_move() {
 #if HAS_SOFTWARE_ENDSTOPS
 
   bool soft_endstops_enabled = true;
-  bool allow_negative_values = true;
+  bool allow_negative_values = false;
 
   // Software Endstops are based on the configured limits.
   axis_limits_t soft_endstop[XYZ] = { { X_MIN_BED, X_MAX_BED }, { Y_MIN_BED, Y_MAX_BED }, { Z_MIN_POS, Z_MAX_POS } };

@@ -2,15 +2,27 @@
 
 Updated Marlin firmware for the CR-20 Pro, created by RedstoneMaster01.
 
+For setup, leveling, Z-offset, and printing instructions, see the [CR-20 Pro Help Guide](help.md).
+
 ## Version 2.3
 
-Version 2.3 adds better support for negative X, Y, and Z movement values.
+Version 2.3 adds estimated print time remaining and better support for negative X, Y, and Z movement values.
+
+- Added estimated time remaining to the main printing screen.
+- `Calc.` is displayed until the progress bar gains its first visible filled segment.
+- The first estimate is calculated as soon as that progress appears, using elapsed time and actual SD-card G-code progress.
+- Remaining time is re-estimated every 60 seconds after the first estimate and counts down between estimates.
+- Elapsed time is aligned above the left edge of the progress bar; remaining time is aligned above its right edge.
 
 - Added `Configuration > Advanced Settings > Allow Negative`.
-- The setting is enabled by default.
+- The setting is disabled by default.
+- The setting is stored in EEPROM with `Configuration > Store Settings` and restored at startup.
+- Existing V67 EEPROM calibration and mesh data are automatically migrated to the new V68 layout.
 - When enabled, minimum software endstops are relaxed so X, Y, and Z can move below zero. Maximum software endstops remain active.
 - Removed the duplicate setting from the Motion menu.
 - Added the v2.3 creator credit to the printer Information screen.
+- Added an automatic build number to the version, displayed as `v2.3 - <build>`.
+- Each CR-20 Pro firmware build increases the saved build number by a random value from 5 through 15.
 - Shortened the LCD label so its On/Off value displays correctly.
 
 Use negative movement carefully, especially on the Z axis, because the nozzle can move below the configured bed-zero position.

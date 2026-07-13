@@ -56,6 +56,39 @@
   #include "../../feature/mixing.h"
 #endif
 
+#if HAS_PRINT_PROGRESS && ENABLED(SDSUPPORT)
+  static bool get_remaining_print_time(const duration_t &elapsed, const uint8_t progress, duration_t &remaining) {
+    static uint32_t estimated_total_seconds, last_estimate_seconds, last_elapsed_seconds, last_sd_position;
+
+    const bool active_print = card.isFileOpen() && (print_job_timer.isRunning() || print_job_timer.isPaused());
+    const uint32_t elapsed_seconds = elapsed.value,
+                   sd_position = card.getIndex(),
+                   file_size = card.getFileSize();
+
+    if (!active_print || elapsed_seconds < last_elapsed_seconds || sd_position < last_sd_position) {
+      estimated_total_seconds = 0;
+      last_estimate_seconds = 0;
+    }
+
+    last_elapsed_seconds = elapsed_seconds;
+    last_sd_position = sd_position;
+
+    if (!active_print || progress <= 1 || !sd_position || !file_size)
+      return false;
+
+    if (!estimated_total_seconds || elapsed_seconds - last_estimate_seconds >= 60) {
+      const uint32_t new_total = (uint32_t)(float(elapsed_seconds) * float(file_size) / float(sd_position) + 0.5f);
+      estimated_total_seconds = MAX(new_total, elapsed_seconds);
+      last_estimate_seconds = elapsed_seconds;
+    }
+
+    if (!estimated_total_seconds) return false;
+
+    remaining.value = estimated_total_seconds > elapsed_seconds ? estimated_total_seconds - elapsed_seconds : 0;
+    return true;
+  }
+#endif
+
 FORCE_INLINE void _draw_centered_temp(const int16_t temp, const uint8_t tx, const uint8_t ty) {
   const char *str = i16tostr3(temp);
   const uint8_t len = str[0] != ' ' ? 3 : str[1] != ' ' ? 2 : 1;
@@ -497,19 +530,28 @@ void MarlinUI::draw_status_screen() {
     // Elapsed Time
     //
 
-    #if DISABLED(DOGM_SD_PERCENT)
-      #define SD_DURATION_X (PROGRESS_BAR_X + (PROGRESS_BAR_WIDTH / 2) - len * (MENU_FONT_WIDTH / 2))
-    #else
-      #define SD_DURATION_X (LCD_PIXEL_WIDTH - len * MENU_FONT_WIDTH)
-    #endif
-
     if (PAGE_CONTAINS(EXTRAS_BASELINE - INFO_FONT_ASCENT, EXTRAS_BASELINE - 1)) {
-      char buffer[13];
+      char buffer[13], remaining_buffer[13];
       duration_t elapsed = print_job_timer.duration();
       bool has_days = (elapsed.value >= 60*60*24L);
-      uint8_t len = elapsed.toDigital(buffer, has_days);
-      lcd_moveto(SD_DURATION_X, EXTRAS_BASELINE);
+      elapsed.toDigital(buffer, has_days);
+      lcd_moveto(PROGRESS_BAR_X, EXTRAS_BASELINE);
       lcd_put_u8str(buffer);
+
+      #if ENABLED(SDSUPPORT)
+        duration_t remaining;
+        if (get_remaining_print_time(elapsed, progress, remaining)) {
+          const bool remaining_has_days = (remaining.value >= 60*60*24L);
+          const uint8_t remaining_len = remaining.toDigital(remaining_buffer, remaining_has_days);
+          lcd_moveto(LCD_PIXEL_WIDTH - remaining_len * MENU_FONT_WIDTH, EXTRAS_BASELINE);
+          lcd_put_u8str(remaining_buffer);
+        }
+        else if (card.isFileOpen() && (print_job_timer.isRunning() || print_job_timer.isPaused())) {
+          const uint8_t calculating_len = utf8_strlen_P(PSTR(MSG_CALCULATING));
+          lcd_moveto(LCD_PIXEL_WIDTH - calculating_len * MENU_FONT_WIDTH, EXTRAS_BASELINE);
+          lcd_put_u8str_P(PSTR(MSG_CALCULATING));
+        }
+      #endif
     }
 
   #endif // HAS_PRINT_PROGRESS

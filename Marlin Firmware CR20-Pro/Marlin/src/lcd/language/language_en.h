@@ -79,6 +79,9 @@
 #ifndef MSG_ALLOW_NEGATIVE_VALUES
   #define MSG_ALLOW_NEGATIVE_VALUES           _UxGT("Allow Negative")
 #endif
+#ifndef MSG_CALCULATING
+  #define MSG_CALCULATING                      _UxGT("Calc.")
+#endif
 #ifndef MSG_MAIN
   #define MSG_MAIN                            _UxGT("Main")
 #endif

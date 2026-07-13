@@ -119,6 +119,7 @@ public:
   static inline int16_t get() { sdpos = file.curPosition(); return (int16_t)file.read(); }
   static inline void setIndex(const uint32_t index) { sdpos = index; file.seekSet(index); }
   static inline uint32_t getIndex() { return sdpos; }
+  static inline uint32_t getFileSize() { return filesize; }
   static inline uint8_t percentDone() { return (isFileOpen() && filesize) ? sdpos / ((filesize + 99) / 100) : 0; }
   static inline char* getWorkDirName() { workDir.getFilename(filename); return filename; }
   static inline int16_t read(void* buf, uint16_t nbyte) { return file.isOpen() ? file.read(buf, nbyte) : -1; }
