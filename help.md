@@ -4,6 +4,19 @@ This guide is for the CR-20 Pro running the RedstoneMaster01 v2.3 firmware.
 
 The CR-20 Pro has a fixed bed without manual leveling knobs. The `Level bed` command uses the BLTouch probe to measure the bed and compensate for small height differences automatically.
 
+## Level the Bed Before Every Print
+
+Always complete one BLTouch bed-leveling cycle immediately before every print. This gives the firmware a fresh compensation mesh for the current bed position and temperature.
+
+Use either of these methods:
+
+- **From the printer:** Select `Motion > Level bed` and wait for the entire probing sequence to finish before selecting the print file.
+- **From the G-code file:** Use `G28` followed immediately by `G29` in the slicer's start G-code. The printer will home and level automatically when the print starts.
+
+One completed cycle is enough. If the file already runs `G28` followed by `G29`, that automatic cycle satisfies this requirement and you do not need to run `Motion > Level bed` first. If you are unsure what the file does, use `Motion > Level bed`, then correct the slicer profile before the next print.
+
+Keep the bed clear and keep hands, tools, and loose filament away while the BLTouch is probing. There are no bed-leveling knobs to turn on the CR-20 Pro.
+
 ## Setting the Probe Z Offset
 
 The Probe Z Offset controls the distance between the nozzle and the bed after the BLTouch detects the bed. Set it carefully for a clean first layer.
@@ -104,6 +117,33 @@ Never force filament through a cold nozzle. If the extruder clicks, stop pushing
 - Popping sounds, steam, bubbles, rough extrusion, and unusually heavy stringing can indicate wet filament.
 - Use a temperature-controlled filament dryer and follow the spool manufacturer's drying instructions. A household oven may overshoot its set temperature and damage the filament or spool.
 
+### Drying Filament in a Food Dehydrator
+
+Use these values only as conservative starting points for ordinary PLA and PETG. The filament and spool manufacturer's instructions take priority when they specify a lower temperature or different time.
+
+| Material | Temperature | Time |
+| --- | ---: | ---: |
+| PLA | `45 C / 113 F` | 6 hours |
+| PETG | `55 C / 131 F` | 6 hours |
+
+Use a dehydrator with an adjustable thermostat, a working circulation fan, and enough room for air to move around both sides of the spool. A dehydrator that cannot hold the required low temperature is not suitable for PLA or PETG.
+
+1. Read the dehydrator manual and confirm that it is designed to run continuously for the full drying time.
+2. Check the filament label for its drying instructions. Use the lower recommended temperature if it differs from the table.
+3. Check that the spool itself can tolerate the drying temperature. Cardboard glue and some plastic spools can loosen, shrink, or warp even when the filament temperature is safe.
+4. Remove the spool from its bag and remove all desiccant packets, clips, labels that may come loose, and other packaging.
+5. Put the complete spool in the dehydrator without unwinding it. Keep it away from the heating element and leave airflow space around it.
+6. Place a separate thermometer near the spool. Do not rely only on the dehydrator's dial or display.
+7. Set PLA to `45 C / 113 F` or PETG to `55 C / 131 F`.
+8. Dry for 6 hours. Check the actual temperature and spool condition periodically.
+9. Stop immediately if the spool warps, the filament becomes soft or sticky, loops begin fusing together, or there is an unusual odor.
+10. At the end, turn the dehydrator off and let the spool cool without exposing it to humid air for a long period.
+11. Put the cooled spool into a sealed bag or dry box with fresh desiccant, or load it into the printer and use it promptly.
+
+If the filament still pops, bubbles, or prints rough after one cycle, confirm the thermometer reading and the filament manufacturer's directions before repeating the cycle. Do not raise the temperature to speed up drying; overheated filament can soften, fuse together, change diameter, or become unusable.
+
+Prefer a dehydrator dedicated to filament. Filament colorants and additives are not food, so do not assume an appliance remains suitable for food preparation after it has been used for filament. Operate it on a stable, nonflammable surface with its vents clear and follow all appliance safety instructions.
+
 ### Other Filament Types
 
 The built-in presets are intended for ordinary PLA and PETG. They are not universal settings for every material.
@@ -137,7 +177,7 @@ Do not select a similarly named CR-series printer unless its machine dimensions 
 
 ### Bed Leveling in Start G-code
 
-The recommended method is to probe the bed at the start of every print. Open the printer profile's start G-code and make sure it contains:
+The bed must be leveled before every print. The recommended automatic method is to probe at the start of every file. Open the printer profile's start G-code and make sure it contains:
 
 ```gcode
 G28 ; Home all axes
@@ -146,7 +186,7 @@ G29 ; Probe the bed after homing
 
 `G29` must come after the final `G28`. Homing after probing can turn leveling compensation off. If a profile already has `G28`, add only the `G29` line immediately after it; do not add a second homing command elsewhere.
 
-With this start G-code, the printer will home and run BLTouch leveling automatically after you start the file. You can still use `Motion > Level bed` as a manual check, but the start G-code will probe again so the print uses a fresh mesh.
+With this start G-code, the printer will home and run BLTouch leveling automatically after you start the file. This fulfills the requirement to level before every print. Do not run `Motion > Level bed` first unless you intentionally want a separate manual check, because the start G-code will probe again.
 
 Keep hands, filament strands, and tools away during the automatic home and probe sequence.
 
@@ -227,16 +267,17 @@ The slicer's time estimate and the printer's remaining-time estimate may differ.
 
 1. Confirm that the model was sliced for the CR-20 Pro and the filament currently loaded.
 2. Check that the selected G-code uses the correct PLA or PETG temperatures.
-3. Check that the start G-code contains `G29` after `G28`.
+3. Decide how this print will be leveled: either select `Motion > Level bed` before the print or confirm that its start G-code contains `G29` after `G28`.
 4. Check that the nozzle is clean and does not have a blob of old filament attached. Clean it carefully while warm and avoid touching the hot nozzle.
 5. Check that the cool bed surface is clean and free of loose filament, dust, and fingerprints.
 6. Check that the BLTouch pin is straight, clean, and able to deploy without hitting anything.
 7. Check that the spool can unwind freely and that the filament is not crossed, tangled, or pinched.
 8. Check that the Bowden tube, hotend wiring, bed wiring, and axis cables will not catch during movement.
 9. Check that the build area is clear and that no tools or old prints remain on the bed.
-10. Insert the SD card, select the correct `.gcode` file, and start the print.
-11. Let the start G-code home and level the printer. Keep hands and tools away while it moves.
-12. Watch the complete first layer. Stop the print if the nozzle scrapes the bed or if filament is not sticking.
+10. Complete one bed-leveling cycle. Select `Motion > Level bed` now unless the file will run `G28` followed by `G29` automatically.
+11. Insert the SD card, select the correct `.gcode` file, and start the print.
+12. If the file handles leveling, let it home and probe the bed. Keep hands and tools away while it moves.
+13. Watch the complete first layer. Stop the print if the nozzle scrapes the bed or if filament is not sticking.
 
 If the selected file does not run `G29` after homing, use `Motion > Level bed` before printing and correct the slicer profile before relying on it for future prints.
 
@@ -359,4 +400,5 @@ The estimate is available only for an active SD-card print. It remains on `Calc.
 - [Original CR-20 Pro Guide Book](https://asset.conrad.com/media10/add/160267/c1/-/en/002141333ML00/user-safety-instructions-2141333-creality-cr-20-pro-3d-printer-assembly-kit-all-filament-types.pdf)
 - [PLA Material Guide](https://help.prusa3d.com/article/pla_2062)
 - [PETG Material Guide](https://help.prusa3d.com/article/petg_2059)
+- [Filament Drying Guide](https://help.prusa3d.com/article/drying-filament_332086)
 - [UltiMaker Cura Overview](https://ultimaker.com/learn/how-to-use-a-3d-printer/)
