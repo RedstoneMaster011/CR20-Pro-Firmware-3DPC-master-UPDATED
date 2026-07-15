@@ -4,6 +4,18 @@ Updated Marlin firmware for the CR-20 Pro, created by RedstoneMaster01.
 
 For setup, leveling, Z-offset, and printing instructions, see the [CR-20 Pro Help Guide](help.md).
 
+## Firmware Emulator
+
+The [browser emulator](emulator/README.md) runs the current HEX on an emulated ATmega2560 with the CR-20 Pro LCD, encoder, steppers, endstops, BLTouch, heaters, fan, virtual SD card, and persistent EEPROM. Its left panel shows a movable 3D printer model, while the right panel provides the firmware-driven screen and clickable, scrollable encoder knob.
+
+```bash
+cd emulator
+npm install
+npm run dev
+```
+
+Run the complete automated firmware and interface test matrix with `npm test -- --all`, or target one area with flags such as `--homing`, `--thermal`, `--sd`, or `--layout`. See the emulator guide for every suite and command-line option.
+
 ## Version 2.3
 
 Version 2.3 adds estimated print time remaining and better support for negative X, Y, and Z movement values.

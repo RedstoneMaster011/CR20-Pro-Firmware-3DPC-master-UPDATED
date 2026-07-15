@@ -94,21 +94,89 @@ PETG can bond extremely strongly to some smooth build surfaces. Follow the build
 
 ### Loading Filament
 
-1. Preheat for the material being loaded.
-2. Cut the filament end cleanly at an angle.
-3. Squeeze the extruder lever and feed the `1.75 mm` filament into the Bowden tube.
-4. Continue feeding until plastic exits the nozzle in a steady strand.
-5. Remove the strand with a tool after moving hands away from the hot nozzle.
+1. Confirm that the spool contains `1.75 mm` filament and that its material matches the selected preheat preset.
+2. Mount the spool so it can unwind smoothly without rubbing, crossing under another loop, or pulling sharply against the extruder.
+3. Inspect the first section of filament. Cut off any bent, swollen, brittle, or chewed portion.
+4. Cut the new end cleanly at an angle and straighten the first several inches by hand.
+5. Select the correct full preheat preset and wait for the nozzle to reach its target temperature.
+6. Squeeze the extruder lever and guide the filament through the extruder entrance. Do not force it beside the drive gear.
+7. Continue feeding it into the Bowden tube until it reaches the hotend and plastic exits the nozzle.
+8. Purge until the strand flows continuously without gaps, bubbles, or traces of the previous color or material.
+9. Release the extruder lever and confirm that the drive gear grips the filament normally.
+10. Remove the purge strand with a tool, keeping fingers away from the hot nozzle.
+11. Check that the spool still turns freely and that no loop has fallen underneath another loop.
 
 Never force filament through a cold nozzle. If the extruder clicks, stop pushing and check the temperature, spool path, Z height, and nozzle for a clog.
 
+### Unloading Filament
+
+1. Identify the material currently in the hotend and select its preheat preset.
+2. Wait until the nozzle reaches the required temperature. Never pull filament from a cold hotend.
+3. Hold the spool so it cannot unwind uncontrollably.
+4. Squeeze the extruder lever.
+5. Push the filament forward slightly until a small amount exits the nozzle. This softens and shapes the tip for removal.
+6. Pull the filament backward in one smooth motion and continue until it leaves the extruder.
+7. Inspect the removed end. If it has a large blob that barely passed through the Bowden tube, cut that damaged end off before future loading.
+8. Secure the loose filament end through a spool hole or clip. Do not let it pass underneath another loop, because that can create a knot during a later print.
+9. Select `Temperature > Cooldown` if another material will not be loaded immediately.
+
 ### Changing Materials
 
-1. Heat the nozzle to a temperature suitable for the material currently inside it.
-2. Push the old filament forward slightly, then withdraw it smoothly while squeezing the extruder lever.
-3. Load the new filament and purge until its color and flow are consistent.
-4. When changing from hotter PETG to cooler PLA, purge the PLA while the nozzle is still hot enough to remove the PETG, then lower the target to the PLA temperature.
-5. Remove the purge strand and select `Cooldown` if printing will not begin immediately.
+1. Read the recommended temperature range on both spools.
+2. Heat the nozzle to a temperature that safely softens the material currently inside it.
+3. Follow the unloading procedure above and secure the old spool immediately.
+4. Mount the new spool, cut a clean angled tip, and load it through the extruder and Bowden tube.
+5. Purge enough filament to remove the previous color and material completely.
+6. When changing from hotter PETG to cooler PLA, purge the PLA while the nozzle is still hot enough to remove the PETG, then lower the target to the PLA printing temperature.
+7. When changing from PLA to PETG, raise the nozzle to the PETG loading temperature and purge until all PLA is gone.
+8. Confirm that the outgoing strand is steady and matches the new material before starting a print.
+9. Remove the purge strand and select `Cooldown` if printing will not begin immediately.
+
+### Changing Filament During a Print
+
+1. Use the printer's `Pause print` or `Change Filament` command. Do not pull filament while the machine is actively moving.
+2. Wait for the print head to stop and park.
+3. Keep the nozzle hot enough for the material being removed.
+4. Unload the old filament, secure its spool, and load the replacement.
+5. Purge until the new filament flows cleanly. Keep the purge strand away from the model.
+6. Remove loose plastic from the nozzle with a tool.
+7. Resume only after checking that the spool path is clear and the nozzle will not drag a strand onto the print.
+8. Watch several resumed layers to confirm that extrusion and layer bonding have returned to normal.
+
+## Preparing the Build Plate With Glue
+
+Use **WASHABLE PURPLE GLUE STICKS** on the CR-20 Pro build surface. The purple color makes it easy to see where glue has been applied, and the washable formula can be removed with water after printing.
+
+Do not use superglue, permanent craft adhesive, hot glue, spray adhesive, or an unknown glue stick. Apply glue only to a cool build plate.
+
+### Before Every Print
+
+1. Let the build plate cool completely.
+2. Remove the previous print and all skirts, brims, purge lines, and loose plastic.
+3. Remove old glue using the cleanup procedure below. Thick layers left from earlier prints can make the first layer uneven.
+4. Dry the build plate completely and make sure it is correctly installed and flat.
+5. Use a **washable purple glue stick** to draw thin, overlapping lines across the area where the model, brim, supports, and purge line will touch.
+6. Apply a second set of thin lines in the other direction to spread coverage evenly. The goal is one smooth film, not ridges or clumps.
+7. Cover slightly beyond the model's footprint. There is no need to coat unused areas of the plate.
+8. Check the surface from an angle and fill only obvious gaps. Do not keep adding layers once coverage is even.
+9. Keep glue away from the plate edges, heater wiring, underside, motion parts, and BLTouch pin.
+10. Run the required bed-leveling cycle, then start the print and watch the complete first layer.
+
+For PLA, the glue helps provide consistent adhesion. For PETG, it can also act as a release layer so the material does not bond too aggressively to a smooth surface.
+
+### Removing Glue After Every Print
+
+1. Wait until the bed and printed model are completely cool.
+2. Remove the model without twisting or pulling against the printer frame.
+3. If the build surface is removable, remove it from the printer before washing. If it is not removable, never pour water onto the printer.
+4. Use warm water and a small amount of ordinary dish soap.
+5. Scrub away all purple glue with a soft cloth or non-scratch sponge. Do not use steel wool, a metal brush, or anything that gouges the print surface.
+6. Rinse a removable surface thoroughly. For a fixed surface, wipe repeatedly with a clean damp cloth without allowing liquid to reach the heater, wiring, electronics, or plate edges.
+7. Dry the top, bottom, and edges completely before reinstalling or heating the plate.
+8. Avoid touching the cleaned printing area with bare fingers because skin oil can reduce adhesion.
+9. Apply a fresh thin layer of washable purple glue before the next print.
+
+Do not scrape hardened glue from a hot plate. Regular cleanup prevents glue buildup from changing the first-layer height or producing an uneven bottom surface.
 
 ### Filament Storage
 
