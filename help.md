@@ -6,6 +6,8 @@ The CR-20 Pro has a fixed bed without manual leveling knobs. The `Level bed` com
 
 ## Level the Bed Before Every Print
 
+Heat the nozzle to 200 C and the bed to 60 C. Then
+
 Always complete one BLTouch bed-leveling cycle immediately before every print. This gives the firmware a fresh compensation mesh for the current bed position and temperature.
 
 Use either of these methods:
