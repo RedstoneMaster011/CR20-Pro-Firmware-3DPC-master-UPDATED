@@ -39,7 +39,6 @@ Version 2.3 adds estimated print time remaining and better support for negative 
 - The setting is stored in EEPROM with `Configuration > Store Settings` and restored at startup.
 - Existing V67 EEPROM calibration and mesh data are automatically migrated to the new V68 layout.
 - When enabled, minimum software endstops are relaxed so X, Y, and Z can move below zero. Maximum software endstops remain active.
-- Shortened the LCD label so its On/Off value displays correctly.
 
 Use negative movement carefully, especially on the Z axis, because the nozzle can move below the configured bed-zero position.
 
