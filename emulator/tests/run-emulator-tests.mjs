@@ -281,14 +281,14 @@ async function pressEncoder(page) {
 async function clickEncoderStep(page, direction, address, timeout) {
   const before = await page.evaluate((offset) => {
     const data = window.__cr20Emulator.cpu.data;
-    return (data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24)) >>> 0;
+    return data[offset] | (data[offset + 1] << 8);
   }, address);
   await page.locator(direction > 0 ? '#encoder-down' : '#encoder-up').click();
-  const target = (before + direction) >>> 0;
+  const target = (before + direction) & 0xffff;
   await page.waitForFunction(
     ({ offset, value }) => {
       const data = window.__cr20Emulator.cpu.data;
-      return ((data[offset] | (data[offset + 1] << 8) | (data[offset + 2] << 16) | (data[offset + 3] << 24)) >>> 0) === value;
+      return (data[offset] | (data[offset + 1] << 8)) === value;
     },
     { offset: address, value: target },
     { timeout },
@@ -344,9 +344,6 @@ async function main() {
             queuedResponses: window.__cr20Emulator.sdCard.response.length,
           },
           sdLabel: document.querySelector('#sd-file-name').textContent,
-          resetVectorJumps: window.__cr20Emulator.resetVectorJumps,
-          restartInstructionTrace: window.__cr20Emulator.restartInstructionTrace,
-          restartEntries: window.__cr20Emulator.restartEntries,
         })) || {};
       } catch {
         // The original failure is more useful if the page has already closed.
@@ -441,6 +438,25 @@ async function main() {
         }));
         assert(speed.value === 2 && speed.label === '2.00×', 'Speed control did not update the emulator', speed);
 
+        const turboCyclesBefore = await page.evaluate(() => window.__cr20Emulator.cpu.cycles);
+        await page.locator('#speed').evaluate((input) => {
+          input.value = '250';
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+        await page.waitForTimeout(250);
+        const turbo = await page.evaluate((before) => ({
+          maximum: document.querySelector('#speed').max,
+          value: window.__cr20Emulator.speed,
+          label: document.querySelector('#speed-value').textContent,
+          cyclesAdvanced: window.__cr20Emulator.cpu.cycles - before,
+        }), turboCyclesBefore);
+        assert(turbo.maximum === '250' && turbo.value === 250 && turbo.label === '250×', '250x turbo control did not update the emulator', turbo);
+        assert(turbo.cyclesAdvanced > 0, 'AVR cycles stopped in 250x turbo mode', turbo);
+        await page.locator('#speed').evaluate((input) => {
+          input.value = '2';
+          input.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+
         await page.locator('#pause-button').click();
         await page.waitForFunction(() => !window.__cr20Emulator.running);
         const pausedCycles = await page.evaluate(() => window.__cr20Emulator.cpu.cycles);
@@ -481,7 +497,7 @@ async function main() {
           state: document.querySelector('#run-state-label').textContent,
         }));
         assert(reset.running && reset.speed === 4 && reset.starts === 1 && reset.state === 'Firmware running', 'Reset control did not reboot into a running state', reset);
-        return { speed, pausedCycles, reset };
+        return { speed, turbo, pausedCycles, reset };
       });
     }
 
@@ -703,7 +719,17 @@ async function main() {
           ]);
           const encoderPosition = avrSymbolAddresses(['MarlinUI::encoderPosition'])['MarlinUI::encoderPosition'];
           const sdPosition = avrSymbolAddresses(['CardReader::sdpos'])['CardReader::sdpos'];
+          const temperatureSymbols = avrSymbolAddresses([
+            'Temperature::temp_hotend',
+            'Temperature::temp_bed',
+          ]);
+          const temperatureAddresses = {
+            hotend: temperatureSymbols['Temperature::temp_hotend'],
+            bed: temperatureSymbols['Temperature::temp_bed'],
+          };
           await waitForLcdScreen(menuPage, screens, 'MarlinUI::status_screen()', options.timeout);
+          await menuPage.evaluate(() => window.__cr20Emulator.setSpeed(2));
+          await menuPage.waitForTimeout(350);
           const startingBed = await menuPage.evaluate(() => window.__cr20Emulator.temperatures.bed);
           const startsBefore = await menuPage.evaluate(() => (window.__cr20Emulator.serialText.match(/^start$/gm) || []).length);
 
@@ -725,6 +751,7 @@ async function main() {
           await menuPage.locator('#encoder-down').click();
           await menuPage.waitForTimeout(500);
           await pressEncoder(menuPage);
+          await menuPage.evaluate(() => window.__cr20Emulator.setSpeed(8));
 
           stage = 'open file';
           await menuPage.waitForFunction(
@@ -752,6 +779,24 @@ async function main() {
           assert(details.serial.includes('B@:127'), 'Firmware did not report active bed-heater power', details);
 
           stage = 'complete heating and homing';
+          await menuPage.evaluate((addresses) => {
+            const readInt16 = (data, address) => {
+              const value = data[address] | (data[address + 1] << 8);
+              return value & 0x8000 ? value - 0x10000 : value;
+            };
+            window.__menuPrintThermalAssist = setInterval(() => {
+              const emulator = window.__cr20Emulator;
+              const data = emulator.cpu.data;
+              const view = emulator.cpu.dataView;
+              const hotendTarget = readInt16(data, addresses.hotend + 8);
+              const bedTarget = readInt16(data, addresses.bed + 8);
+              if (hotendTarget > 0)
+                emulator.temperatures.hotend += hotendTarget - view.getFloat32(addresses.hotend + 4, true);
+              if (bedTarget > 0)
+                emulator.temperatures.bed += bedTarget - view.getFloat32(addresses.bed + 4, true);
+              emulator.updateAdc();
+            }, 20);
+          }, temperatureAddresses);
           await menuPage.waitForFunction(
             ({ offset, minimum }) => {
               const emulator = window.__cr20Emulator;
@@ -795,6 +840,10 @@ async function main() {
           error.details = { ...(error.details || {}), stage, menuPrint: state };
           throw error;
         } finally {
+          await menuPrint.page.evaluate(() => {
+            clearInterval(window.__menuPrintThermalAssist);
+            delete window.__menuPrintThermalAssist;
+          }).catch(() => {});
           await menuPrint.context.close();
           await desktop.page.evaluate(() => window.__cr20Emulator.resume()).catch(() => {});
         }

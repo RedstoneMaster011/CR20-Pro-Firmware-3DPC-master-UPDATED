@@ -32,7 +32,9 @@ import {
 import { VirtualSDCard } from './virtual-sd.js';
 
 const CPU_HZ = 16_000_000;
+const MAX_EMULATION_SPEED = 250;
 const EEPROM_KEY = 'cr20-pro-emulator-eeprom-v2.3';
+const ENCODER_PULSES_PER_NOTCH = 5;
 const BLTOUCH_COMMANDS = [10, 60, 90, 120, 130, 140, 150, 160];
 const STEPPERS_BY_STEP_PIN = new Map([
   [54, { axis: 'x', direction: 55, enable: 38, stepsPerMm: 80, inverted: false }],
@@ -329,6 +331,7 @@ export class CR20Emulator {
     this.pinOutputs = new Map();
     this.inputStates = new Map();
     this.inputEvents = [];
+    this.encoderPhase = 0;
     this.serialQueue = [];
     this.serialText = '';
     this.lcdPageSequence = 0;
@@ -351,13 +354,6 @@ export class CR20Emulator {
     this.lastTelemetryTime = 0;
     this.extrusionSampleSteps = 0;
     this.unexpectedResets = [];
-    this.resetVectorJumps = [];
-    this.restartTrace = new Array(2048);
-    this.restartTraceIndex = 0;
-    this.restartTraceArmed = false;
-    this.restartInstructionTrace = [];
-    this.restartEntries = [];
-    this.serialLine = '';
     this.boundFrame = (time) => this.frame(time);
   }
 
@@ -433,6 +429,7 @@ export class CR20Emulator {
     this.lastHardwareCycle = 0;
     this.hardwareAccumulator = 0;
     this.inputEvents.length = 0;
+    this.encoderPhase = 0;
     this.serialQueue.length = 0;
     this.lcdPageSequence = 0;
     this.lcdDataBytesRemaining = 0;
@@ -487,7 +484,7 @@ export class CR20Emulator {
   }
 
   setSpeed(speed) {
-    this.speed = Math.max(0.25, Math.min(8, speed));
+    this.speed = Math.max(0.25, Math.min(MAX_EMULATION_SPEED, speed));
   }
 
   frame(timestamp) {
@@ -496,55 +493,23 @@ export class CR20Emulator {
     this.lastFrameTime = timestamp;
     const targetCycle = this.cpu.cycles + elapsedMs * CPU_HZ * this.speed / 1000;
     let instructionCount = 0;
-    const maxInstructions = 900000;
+    // Turbo modes run as fast as the host allows. Keep a finite frame budget
+    // so the LCD, controls, and browser rendering continue to receive time.
+    const maxInstructions = this.speed > 8 ? 1800000 : 900000;
 
     while (this.cpu.cycles < targetCycle && instructionCount < maxInstructions) {
-      const previousPc = this.cpu.pc;
-      const previousOpcode = this.cpu.progMem[previousPc];
-      if (this.restartTraceArmed) {
-        this.restartTrace[this.restartTraceIndex % this.restartTrace.length] = {
-          cycles: this.cpu.cycles,
-          pc: previousPc,
-          opcode: previousOpcode,
-          sp: this.cpu.SP,
-        };
-        this.restartTraceIndex += 1;
-      }
+      const interruptsWereEnabled = this.cpu.interruptsEnabled;
       avrInstruction(this.cpu);
-      if (
-        this.restartTraceArmed
-        && (this.cpu.pc === 0x225f || this.cpu.pc === 0x12eab)
-        && previousPc !== this.cpu.pc - 1
-      ) {
-        const traceCount = Math.min(this.restartTraceIndex, 96);
-        const first = Math.max(0, this.restartTraceIndex - traceCount);
-        this.restartEntries.push({
-          cycles: this.cpu.cycles,
-          entryPc: this.cpu.pc,
-          previousPc,
-          previousOpcode,
-          sp: this.cpu.SP,
-          trace: Array.from(
-            { length: traceCount },
-            (_, index) => this.restartTrace[(first + index) % this.restartTrace.length],
-          ),
-        });
-        if (this.restartEntries.length > 4) this.restartEntries.shift();
+      if (!interruptsWereEnabled && this.cpu.interruptsEnabled) {
+        // AVR guarantees one instruction after setting SREG.I before accepting
+        // a pending interrupt. GCC relies on this while restoring SPL/SPH.
+        const sreg = this.cpu.SREG;
+        this.cpu.data[0x5f] = sreg & 0x7f;
+        this.cpu.tick();
+        this.cpu.data[0x5f] = sreg;
+      } else {
+        this.cpu.tick();
       }
-      if (this.cpu.pc < 4 && previousPc > 0x80) {
-        const sp = this.cpu.SP;
-        this.resetVectorJumps.push({
-          cycles: this.cpu.cycles,
-          previousPc,
-          previousOpcode,
-          nextPc: this.cpu.pc,
-          sp,
-          sreg: this.cpu.SREG,
-          stack: Array.from(this.cpu.data.subarray(Math.max(0, sp - 6), Math.min(this.cpu.data.length, sp + 10))),
-        });
-        if (this.resetVectorJumps.length > 8) this.resetVectorJumps.shift();
-      }
-      this.cpu.tick();
       instructionCount += 1;
       if ((instructionCount & 0x3f) === 0) {
         this.flushInputEvents();
@@ -810,17 +775,14 @@ export class CR20Emulator {
     if (!this.cpu) return;
     const lastCycle = this.inputEvents.at(-1)?.cycle || this.cpu.cycles;
     let cycle = Math.max(lastCycle, this.cpu.cycles) + CPU_HZ * 0.004;
-    const clockwise = [[true, false], [false, false], [false, true], [true, true]];
-    const counterClockwise = [[false, true], [false, false], [true, false], [true, true]];
-    const sequence = direction > 0 ? clockwise : counterClockwise;
-    // This MiniPanel build expects five pulses per menu step. Two complete
-    // quadrature cycles provide one reliable detent after Marlin debouncing.
-    for (let turn = 0; turn < 2; turn += 1) {
-      for (const [a, b] of sequence) {
-        this.scheduleInput(31, a, cycle);
-        this.scheduleInput(33, b, cycle);
-        cycle += CPU_HZ * 0.004;
-      }
+    const phases = [[true, true], [true, false], [false, false], [false, true]];
+    const phaseDirection = direction > 0 ? 1 : -1;
+    for (let pulse = 0; pulse < ENCODER_PULSES_PER_NOTCH; pulse += 1) {
+      this.encoderPhase = (this.encoderPhase + phaseDirection + phases.length) % phases.length;
+      const [a, b] = phases[this.encoderPhase];
+      this.scheduleInput(31, a, cycle);
+      this.scheduleInput(33, b, cycle);
+      cycle += CPU_HZ * 0.004;
     }
   }
 
@@ -848,24 +810,6 @@ export class CR20Emulator {
     const character = String.fromCharCode(value);
     this.serialText += character;
     if (this.serialText.length > 120000) this.serialText = this.serialText.slice(-100000);
-    if (character === '\n') {
-      const line = this.serialLine.trim();
-      if (line.includes('Count X:')) {
-        this.restartTraceIndex = 0;
-        this.restartTraceArmed = true;
-      } else if (line === 'start' && this.restartTraceArmed) {
-        const count = Math.min(this.restartTraceIndex, this.restartTrace.length);
-        const first = Math.max(0, this.restartTraceIndex - count);
-        this.restartInstructionTrace = Array.from(
-          { length: count },
-          (_, index) => this.restartTrace[(first + index) % this.restartTrace.length],
-        );
-        this.restartTraceArmed = false;
-      }
-      this.serialLine = '';
-    } else if (character !== '\r') {
-      this.serialLine = `${this.serialLine}${character}`.slice(-180);
-    }
     this.onSerial(character, this.serialText);
   }
 
@@ -880,9 +824,6 @@ export class CR20Emulator {
       dutyPeaks: { ...this.dutyPeaks },
       statusLed: { ...this.statusLed },
       unexpectedResets: this.unexpectedResets.map((event) => ({ ...event })),
-      resetVectorJumps: this.resetVectorJumps.map((event) => ({ ...event })),
-      restartInstructionTrace: this.restartInstructionTrace.map((event) => ({ ...event })),
-      restartEntries: this.restartEntries.map((event) => ({ ...event, trace: [...event.trace] })),
       probe: { ...this.probe, commands: [...this.probe.commands] },
       cycles: this.cpu?.cycles || 0,
       speed: this.speed,

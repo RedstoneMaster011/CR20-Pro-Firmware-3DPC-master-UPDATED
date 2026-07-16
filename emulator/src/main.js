@@ -134,10 +134,16 @@ elements.reset.addEventListener('click', () => {
   emulator.reset();
 });
 
+function formatSpeed(speed) {
+  if (speed >= 100) return `${speed.toFixed(0)}×`;
+  if (speed >= 10) return `${speed.toFixed(1)}×`;
+  return `${speed.toFixed(2)}×`;
+}
+
 elements.speed.addEventListener('input', () => {
   const speed = Number.parseFloat(elements.speed.value);
   emulator.setSpeed(speed);
-  elements.speedValue.textContent = `${speed.toFixed(2)}×`;
+  elements.speedValue.textContent = formatSpeed(speed);
 });
 
 elements.serialForm.addEventListener('submit', (event) => {
