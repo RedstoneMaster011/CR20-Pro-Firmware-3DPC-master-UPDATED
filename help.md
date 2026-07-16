@@ -1,4 +1,4 @@
-# CR-20 Pro Help Guide
+# CR-20 Pro Help Guide        
 
 This guide is for the CR-20 Pro running the RedstoneMaster01 v2.3 firmware.
 
