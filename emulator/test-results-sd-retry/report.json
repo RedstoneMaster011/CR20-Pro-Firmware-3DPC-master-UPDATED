@@ -1,0 +1,22 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58611",
+  "generatedAt": "2026-07-16T13:04:07.153Z",
+  "suites": [
+    "sd"
+  ],
+  "passed": 1,
+  "failed": 0,
+  "results": [
+    {
+      "name": "sd",
+      "status": "passed",
+      "durationMs": 24927,
+      "details": {
+        "listing": "Begin file list\nDEMO.GCO 1322\r\nEnd file list\nok\n",
+        "progress": "SD printing byte 449/1322\r\nok\n",
+        "completed": "Done printing file"
+      }
+    }
+  ]
+}

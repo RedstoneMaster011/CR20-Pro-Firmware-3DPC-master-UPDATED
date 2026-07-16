@@ -1,0 +1,116 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58657",
+  "generatedAt": "2026-07-16T15:26:56.655Z",
+  "suites": [
+    "homing"
+  ],
+  "passed": 0,
+  "failed": 1,
+  "results": [
+    {
+      "name": "homing",
+      "status": "failed",
+      "durationMs": 39897,
+      "error": "Firmware restarted after G28 and M420",
+      "details": {
+        "startsBefore": 1,
+        "leveling": "echo:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70",
+        "after": {
+          "axes": {
+            "x": 156.98749999997602,
+            "y": 127.00000000000216,
+            "z": 10.117499999999978,
+            "e": 0
+          },
+          "extents": {
+            "x": {
+              "min": -0.012500000018153615,
+              "max": 156.98749999997602
+            },
+            "y": {
+              "min": -0.012500000018153615,
+              "max": 127.00000000000216
+            },
+            "z": {
+              "min": 0.11749999999984906,
+              "max": 20.000000000000853
+            },
+            "e": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "commands": [
+              160,
+              90,
+              10,
+              90,
+              10,
+              90,
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 2
+          },
+          "starts": 2,
+          "unexpectedResets": []
+        },
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58657\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2120  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nX:157.00 Y:127.00 Z:10.00 E:0.00 Count X:12560 Y:10160 Z:4000\nstart\necho:Marlin v2.3 - 58657\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2120  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:Invalid mesh.\nError:Failed to enable Bed Leveling\necho:Bed Leveling OFF\necho:Fade Height OFF\nok\n",
+          "running": true,
+          "cycles": 541498380,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 156.98749999997602,
+            "y": 127.00000000000216,
+            "z": 10.117499999999978,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              90,
+              10,
+              90,
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 2
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    }
+  ]
+}

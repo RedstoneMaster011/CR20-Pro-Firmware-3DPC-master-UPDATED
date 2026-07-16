@@ -1,0 +1,196 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58634",
+  "generatedAt": "2026-07-16T13:49:22.409Z",
+  "suites": [
+    "benchy",
+    "print-controls",
+    "layout"
+  ],
+  "passed": 2,
+  "failed": 1,
+  "results": [
+    {
+      "name": "benchy",
+      "status": "passed",
+      "durationMs": 21080,
+      "details": {
+        "fileName": "3DBENCHY.GCO",
+        "imageBytes": 5767168,
+        "sectors": 11264,
+        "listing": "Begin file list\n3DBENCHY.GCO 5337861\r\nEnd file list\nok\n"
+      }
+    },
+    {
+      "name": "print-controls",
+      "status": "failed",
+      "durationMs": 150082,
+      "error": "page.waitForFunction: Timeout 120000ms exceeded.",
+      "details": {
+        "stage": "reload custom settings",
+        "controlled": {
+          "serialTail": "start\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:Settings Stored (629 bytes; crc 29142)\nok\necho:V70 stored settings retrieved (629 bytes; crc 29142)\necho:  G21    ; Units in mm (mm)\necho:  M149 C ; Units in Celsius\n\necho:Filament settings: Disabled\necho:  M200 D1.75\necho:  M200 D0\necho:Steps per unit:\necho: M92 X80.00 Y80.00 Z400.00 E93.00\necho:Maximum feedrates (units/s):\necho:  M203 X250.00 Y250.00 Z5.00 E25.00\necho:Maximum Acceleration (units/s2):\necho:  M201 X500.00 Y500.00 Z100.00 E1000.00\necho:Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>\necho:  M204 P500.00 R500.00 T1000.00\necho:Advanced: B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> X<max_x_jerk> Y<max_y_jerk> Z<max_z_jerk> E<max_e_jerk>\necho:  M205 B20000.00 S0.00 T0.00 X10.00 Y10.00 Z0.40 E5.00\necho:Home offset:\necho:  M206 X0.00 Y0.00 Z0.00\necho:Auto Bed Leveling:\necho:  M420 S0 Z0.00\necho:Material heatup parameters:\necho:  M145 S0 H200 B60 F0\necho:  M145 S1 H230 B80 F0\necho:PID settings:\necho:  M301 P20.84 I1.96 D55.47\necho:Power-Loss Recovery:\necho:  M413 S1\necho:Z-Probe Offset (mm):\necho:  M851 Z0.00\necho:Linear Advance:\necho:  M900 K0.00\necho:Filament load/unload lengths:\necho:  M603 L0.00 U100.00\nok\n",
+          "fileName": "DEMO.GCO",
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          }
+        },
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\n",
+          "running": true,
+          "cycles": 1196524999,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    },
+    {
+      "name": "layout",
+      "status": "passed",
+      "durationMs": 29417,
+      "details": {
+        "desktop": {
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "scrollHeight": 960,
+          "clientHeight": 960,
+          "camera": [
+            9.200000000000001,
+            6.599999999999999,
+            12.499999999999998
+          ],
+          "pixels": {
+            "width": 950,
+            "height": 960,
+            "opaque": 912000,
+            "varied": 15568
+          }
+        },
+        "mobile": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "commandBottom": 1321.4375,
+          "footerTop": 1337.4375,
+          "controls": [
+            {
+              "tag": "CANVAS",
+              "left": 0,
+              "right": 390,
+              "width": 390
+            },
+            {
+              "tag": "BUTTON",
+              "left": 297,
+              "right": 333,
+              "width": 36
+            },
+            {
+              "tag": "BUTTON",
+              "left": 340,
+              "right": 376,
+              "width": 36
+            },
+            {
+              "tag": "CANVAS",
+              "left": 24,
+              "right": 286,
+              "width": 262
+            },
+            {
+              "tag": "BUTTON",
+              "left": 312,
+              "right": 372,
+              "width": 60
+            },
+            {
+              "tag": "INPUT",
+              "left": 214,
+              "right": 318.75,
+              "width": 104.75
+            },
+            {
+              "tag": "BUTTON",
+              "left": 328.765625,
+              "right": 376,
+              "width": 47.234375
+            },
+            {
+              "tag": "INPUT",
+              "left": 366,
+              "right": 367,
+              "width": 1
+            },
+            {
+              "tag": "INPUT",
+              "left": 14,
+              "right": 311,
+              "width": 297
+            },
+            {
+              "tag": "BUTTON",
+              "left": 318,
+              "right": 376,
+              "width": 58
+            }
+          ],
+          "pixels": {
+            "width": 390,
+            "height": 439,
+            "opaque": 171210,
+            "varied": 3412
+          }
+        },
+        "movedCamera": [
+          2.5616585104531544,
+          6.600000000000003,
+          15.30777272093571
+        ],
+        "mechanism": {
+          "traceSegments": 1,
+          "fanBefore": 31.519999999999506,
+          "fanAfter": 65.11999999999964,
+          "bedZ": -0.22491969610444984,
+          "carriageX": 0.12495538672469451,
+          "gantryY": 2.2199643093797556,
+          "probeY": -1.029999705292549
+        }
+      }
+    }
+  ]
+}

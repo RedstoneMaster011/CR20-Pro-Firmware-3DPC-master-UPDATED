@@ -1,0 +1,108 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58642",
+  "generatedAt": "2026-07-16T14:19:22.344Z",
+  "suites": [
+    "sd",
+    "usb",
+    "print-controls"
+  ],
+  "passed": 3,
+  "failed": 0,
+  "results": [
+    {
+      "name": "sd",
+      "status": "passed",
+      "durationMs": 6356,
+      "details": {
+        "listing": "Begin file list\nDEMO.GCO 283\r\nEnd file list\nok\n",
+        "size": 283,
+        "progress": "echo:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\n",
+        "completed": "ok\necho:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nDone printing file",
+        "statusHash": 813871352,
+        "finishedHash": 2936773924,
+        "finishedScreen": {
+          "pointer": 5522,
+          "target": 13461
+        }
+      }
+    },
+    {
+      "name": "usb",
+      "status": "passed",
+      "durationMs": 17887,
+      "details": {
+        "axes": {
+          "x": 118.50000000000023,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "starts": 1,
+        "printingHash": 2915426623,
+        "finishedHash": 63869204,
+        "finishedScreen": {
+          "pointer": 5522,
+          "target": 13461
+        }
+      }
+    },
+    {
+      "name": "print-controls",
+      "status": "passed",
+      "durationMs": 57971,
+      "details": {
+        "defaults": {
+          "betterBed": 1,
+          "overrideEnabled": 0,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        },
+        "persisted": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        },
+        "early": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 70,
+          "fan": 255,
+          "hotendTarget": 200,
+          "bedTarget": 60
+        },
+        "restored": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 64,
+          "hotendTarget": 200,
+          "bedTarget": 60
+        },
+        "cooled": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        }
+      }
+    }
+  ]
+}

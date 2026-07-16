@@ -1,0 +1,433 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58634",
+  "generatedAt": "2026-07-16T13:36:09.987Z",
+  "suites": [
+    "boot",
+    "lcd",
+    "encoder",
+    "controls",
+    "serial",
+    "motion",
+    "homing",
+    "thermal",
+    "sd",
+    "usb",
+    "mount",
+    "print-controls",
+    "eeprom",
+    "layout"
+  ],
+  "passed": 12,
+  "failed": 2,
+  "results": [
+    {
+      "name": "boot",
+      "status": "passed",
+      "durationMs": 1420,
+      "details": {
+        "firmwareBytes": 165798,
+        "cycles": 112350614,
+        "starts": 1
+      }
+    },
+    {
+      "name": "lcd",
+      "status": "passed",
+      "durationMs": 2059,
+      "details": {
+        "displayOn": true,
+        "receivedFrame": true,
+        "nonzeroBytes": 537,
+        "byteSum": 43710
+      }
+    },
+    {
+      "name": "encoder",
+      "status": "passed",
+      "durationMs": 7256,
+      "details": {
+        "statusHash": 253740570,
+        "menuHash": 2278227254,
+        "rotatedHash": 1948358994
+      }
+    },
+    {
+      "name": "controls",
+      "status": "passed",
+      "durationMs": 28485,
+      "details": {
+        "speed": {
+          "value": 2,
+          "label": "2.00×"
+        },
+        "pausedCycles": 204109693,
+        "reset": {
+          "running": true,
+          "speed": 4,
+          "starts": 1,
+          "state": "Firmware running"
+        }
+      }
+    },
+    {
+      "name": "serial",
+      "status": "passed",
+      "durationMs": 1211,
+      "details": {
+        "response": "FIRMWARE_NAME:Marlin v2.3 - 58634 (print ETA + negative value support) SOURCE_CODE_URL:https://github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:CR-20 Pro EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff\nCap:SERIAL_XON_XOFF:0\r\nCap:BINARY_FILE_TRANSFER:0\r\nCap:EEPROM:1\r\nCap:VOLUMETRIC:1\r\nCap:AUTOREPORT_TEMP:1\r\nCap:PROGRESS:0\r\nCap:PRINT_JOB:1\r\nCap:AUTOLEVEL:1\r\nCap:Z_PROBE:1\r\nCap:LEVELING_DATA:1\r\nCap:BUILD_PERCENT:1\r\nCap:SOFTWARE_POWER:0\r\nCap:TOGGLE_LIGHTS:1\r\nCap:CASE_LIGH"
+      }
+    },
+    {
+      "name": "motion",
+      "status": "passed",
+      "durationMs": 5775,
+      "details": {
+        "before": {
+          "x": 117.5,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "after": {
+          "x": 120.50000000000068,
+          "y": 119.50000000000045,
+          "z": 10.999999999999801,
+          "e": 0
+        },
+        "returned": {
+          "x": 117.5,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        }
+      }
+    },
+    {
+      "name": "homing",
+      "status": "passed",
+      "durationMs": 49922,
+      "details": {
+        "before": {
+          "x": 117.5,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "response": "echo:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nX:157.00 Y:127.00 Z:10.00 E:0.00 Count X:12560 Y:10160 Z:4000\nok",
+        "axes": {
+          "x": 156.999999999976,
+          "y": 126.98750000000216,
+          "z": 10.117499999999978,
+          "e": 0
+        },
+        "extents": {
+          "x": {
+            "min": -0.05000000001815362,
+            "max": 156.999999999976
+          },
+          "y": {
+            "min": -0.05000000001815362,
+            "max": 126.98750000000216
+          },
+          "z": {
+            "min": 0.11499999999984906,
+            "max": 20.000000000000853
+          },
+          "e": {
+            "min": 0,
+            "max": 0
+          }
+        },
+        "probe": {
+          "deployed": false,
+          "triggered": false,
+          "commands": [
+            160,
+            90,
+            10,
+            90,
+            10,
+            90
+          ],
+          "triggerCount": 2
+        }
+      }
+    },
+    {
+      "name": "thermal",
+      "status": "failed",
+      "durationMs": 32029,
+      "error": "Hotend heater did not turn on",
+      "details": {
+        "temperatures": {
+          "hotend": 40.210965883892975,
+          "bed": 26.009369795426405
+        },
+        "duties": {
+          "hotend": 0.19444781767270156,
+          "bed": 1,
+          "fan": 0.5009865952187303
+        },
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nFIRMWARE_NAME:Marlin v2.3 - 58634 (print ETA + negative value support) SOURCE_CODE_URL:https://github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:CR-20 Pro EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff\nCap:SERIAL_XON_XOFF:0\r\nCap:BINARY_FILE_TRANSFER:0\r\nCap:EEPROM:1\r\nCap:VOLUMETRIC:1\r\nCap:AUTOREPORT_TEMP:1\r\nCap:PROGRESS:0\r\nCap:PRINT_JOB:1\r\nCap:AUTOLEVEL:1\r\nCap:Z_PROBE:1\r\nCap:LEVELING_DATA:1\r\nCap:BUILD_PERCENT:1\r\nCap:SOFTWARE_POWER:0\r\nCap:TOGGLE_LIGHTS:1\r\nCap:CASE_LIGHT_BRIGHTNESS:1\r\nCap:EMERGENCY_PARSER:0\r\nCap:PROMPT_SUPPORT:0\r\nCap:AUTOREPORT_SD_STATUS:0\r\nCap:THERMAL_PROTECTION:1\r\nCap:MOTION_MODES:0\r\nCap:CHAMBER_TEMPERATURE:0\r\nok\nok\nok\nok\nok\nok\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nX:157.00 Y:127.00 Z:10.00 E:0.00 Count X:12560 Y:10160 Z:4000\nok\nstart\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nok\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nok\nok\nok\nok\nok\n",
+          "running": true,
+          "cycles": 720935158,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 156.999999999976,
+            "y": 126.98750000000216,
+            "z": 10.117499999999978,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              90,
+              10,
+              90,
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 2
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    },
+    {
+      "name": "sd",
+      "status": "passed",
+      "durationMs": 12975,
+      "details": {
+        "listing": "Begin file list\nDEMO.GCO 283\r\nEnd file list\nok\n",
+        "size": 283,
+        "progress": "echo:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\n",
+        "completed": "ok\necho:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nDone printing file",
+        "statusHash": 1176995483,
+        "finishedHash": 347764252,
+        "finishedScreen": {
+          "pointer": 5517,
+          "target": 13439
+        }
+      }
+    },
+    {
+      "name": "usb",
+      "status": "passed",
+      "durationMs": 33579,
+      "details": {
+        "axes": {
+          "x": 118.50000000000023,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "starts": 1,
+        "printingHash": 2915426623,
+        "finishedHash": 63869204,
+        "finishedScreen": {
+          "pointer": 5517,
+          "target": 13439
+        }
+      }
+    },
+    {
+      "name": "mount",
+      "status": "passed",
+      "durationMs": 24925,
+      "details": {
+        "fileName": "MOUNTEDT.GCO",
+        "listing": "Begin file list\nMOUNTEDT.GCO 45\r\nEnd file list\nok\n"
+      }
+    },
+    {
+      "name": "print-controls",
+      "status": "failed",
+      "durationMs": 143647,
+      "error": "page.waitForFunction: Timeout 120000ms exceeded.",
+      "details": {
+        "diagnostics": {
+          "serialTail": "ttings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nFIRMWARE_NAME:Marlin v2.3 - 58634 (print ETA + negative value support) SOURCE_CODE_URL:https://github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:CR-20 Pro EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff\nCap:SERIAL_XON_XOFF:0\r\nCap:BINARY_FILE_TRANSFER:0\r\nCap:EEPROM:1\r\nCap:VOLUMETRIC:1\r\nCap:AUTOREPORT_TEMP:1\r\nCap:PROGRESS:0\r\nCap:PRINT_JOB:1\r\nCap:AUTOLEVEL:1\r\nCap:Z_PROBE:1\r\nCap:LEVELING_DATA:1\r\nCap:BUILD_PERCENT:1\r\nCap:SOFTWARE_POWER:0\r\nCap:TOGGLE_LIGHTS:1\r\nCap:CASE_LIGHT_BRIGHTNESS:1\r\nCap:EMERGENCY_PARSER:0\r\nCap:PROMPT_SUPPORT:0\r\nCap:AUTOREPORT_SD_STATUS:0\r\nCap:THERMAL_PROTECTION:1\r\nCap:MOTION_MODES:0\r\nCap:CHAMBER_TEMPERATURE:0\r\nok\nok\nok\nok\nok\nok\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nX:157.00 Y:127.00 Z:10.00 E:0.00 Count X:12560 Y:10160 Z:4000\nok\nstart\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nok\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nok\nok\nok\nok\nok\nBegin file list\nDEMO.GCO 283\r\nEnd file list\nok\necho:Now fresh file: DEMO.GCO\nFile opened: DEMO.GCO Size: 283\nFile selected\nok\nok\necho:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nDone printing file\n",
+          "running": true,
+          "cycles": 1879098250,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 156.999999999976,
+            "y": 126.98750000000216,
+            "z": 10.117499999999978,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              90,
+              10,
+              90,
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 2
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    },
+    {
+      "name": "eeprom",
+      "status": "passed",
+      "durationMs": 30267,
+      "details": {
+        "changedBytes": 645,
+        "checksum": 2077904030
+      }
+    },
+    {
+      "name": "layout",
+      "status": "passed",
+      "durationMs": 27580,
+      "details": {
+        "desktop": {
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "scrollHeight": 960,
+          "clientHeight": 960,
+          "camera": [
+            9.200000000000001,
+            6.599999999999999,
+            12.499999999999998
+          ],
+          "pixels": {
+            "width": 950,
+            "height": 960,
+            "opaque": 912000,
+            "varied": 15741
+          }
+        },
+        "mobile": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "commandBottom": 1321.4375,
+          "footerTop": 1337.4375,
+          "controls": [
+            {
+              "tag": "CANVAS",
+              "left": 0,
+              "right": 390,
+              "width": 390
+            },
+            {
+              "tag": "BUTTON",
+              "left": 297,
+              "right": 333,
+              "width": 36
+            },
+            {
+              "tag": "BUTTON",
+              "left": 340,
+              "right": 376,
+              "width": 36
+            },
+            {
+              "tag": "CANVAS",
+              "left": 24,
+              "right": 286,
+              "width": 262
+            },
+            {
+              "tag": "BUTTON",
+              "left": 312,
+              "right": 372,
+              "width": 60
+            },
+            {
+              "tag": "INPUT",
+              "left": 214,
+              "right": 318.75,
+              "width": 104.75
+            },
+            {
+              "tag": "BUTTON",
+              "left": 328.765625,
+              "right": 376,
+              "width": 47.234375
+            },
+            {
+              "tag": "INPUT",
+              "left": 366,
+              "right": 367,
+              "width": 1
+            },
+            {
+              "tag": "INPUT",
+              "left": 14,
+              "right": 311,
+              "width": 297
+            },
+            {
+              "tag": "BUTTON",
+              "left": 318,
+              "right": 376,
+              "width": 58
+            }
+          ],
+          "pixels": {
+            "width": 390,
+            "height": 439,
+            "opaque": 171210,
+            "varied": 3412
+          }
+        },
+        "movedCamera": [
+          2.5616585104531544,
+          6.600000000000003,
+          15.30777272093571
+        ]
+      }
+    }
+  ]
+}

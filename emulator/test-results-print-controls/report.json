@@ -1,0 +1,71 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58634",
+  "generatedAt": "2026-07-16T13:52:57.057Z",
+  "suites": [
+    "print-controls"
+  ],
+  "passed": 0,
+  "failed": 1,
+  "results": [
+    {
+      "name": "print-controls",
+      "status": "failed",
+      "durationMs": 157027,
+      "error": "page.waitForFunction: Timeout 120000ms exceeded.",
+      "details": {
+        "stage": "first layer values",
+        "controlled": {
+          "serialTail": "dcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:Settings Stored (629 bytes; crc 29142)\nok\necho:V70 stored settings retrieved (629 bytes; crc 29142)\necho:  G21    ; Units in mm (mm)\necho:  M149 C ; Units in Celsius\n\necho:Filament settings: Disabled\necho:  M200 D1.75\necho:  M200 D0\necho:Steps per unit:\necho: M92 X80.00 Y80.00 Z400.00 E93.00\necho:Maximum feedrates (units/s):\necho:  M203 X250.00 Y250.00 Z5.00 E25.00\necho:Maximum Acceleration (units/s2):\necho:  M201 X500.00 Y500.00 Z100.00 E1000.00\necho:Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>\necho:  M204 P500.00 R500.00 T1000.00\necho:Advanced: B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> X<max_x_jerk> Y<max_y_jerk> Z<max_z_jerk> E<max_e_jerk>\necho:  M205 B20000.00 S0.00 T0.00 X10.00 Y10.00 Z0.40 E5.00\necho:Home offset:\necho:  M206 X0.00 Y0.00 Z0.00\necho:Auto Bed Leveling:\necho:  M420 S0 Z0.00\necho:Material heatup parameters:\necho:  M145 S0 H200 B60 F0\necho:  M145 S1 H230 B80 F0\necho:PID settings:\necho:  M301 P20.84 I1.96 D55.47\necho:Power-Loss Recovery:\necho:  M413 S1\necho:Z-Probe Offset (mm):\necho:  M851 Z0.00\necho:Linear Advance:\necho:  M900 K0.00\necho:Filament load/unload lengths:\necho:  M603 L0.00 U100.00\nok\necho:SD card ok\necho:V70 stored settings retrieved (629 bytes; crc 29142)\necho:  G21    ; Units in mm (mm)\necho:  M149 C ; Units in Celsius\n\necho:Filament settings: Disabled\necho:  M200 D1.75\necho:  M200 D0\necho:Steps per unit:\necho: M92 X80.00 Y80.00 Z400.00 E93.00\necho:Maximum feedrates (units/s):\necho:  M203 X250.00 Y250.00 Z5.00 E25.00\necho:Maximum Acceleration (units/s2):\necho:  M201 X500.00 Y500.00 Z100.00 E1000.00\necho:Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>\necho:  M204 P500.00 R500.00 T1000.00\necho:Advanced: B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> X<max_x_jerk> Y<max_y_jerk> Z<max_z_jerk> E<max_e_jerk>\necho:  M205 B20000.00 S0.00 T0.00 X10.00 Y10.00 Z0.40 E5.00\necho:Home offset:\necho:  M206 X0.00 Y0.00 Z0.00\necho:Auto Bed Leveling:\necho:  M420 S0 Z0.00\necho:Material heatup parameters:\necho:  M145 S0 H200 B60 F0\necho:  M145 S1 H230 B80 F0\necho:PID settings:\necho:  M301 P20.84 I1.96 D55.47\necho:Power-Loss Recovery:\necho:  M413 S1\necho:Z-Probe Offset (mm):\necho:  M851 Z0.00\necho:Linear Advance:\necho:  M900 K0.00\necho:Filament load/unload lengths:\necho:  M603 L0.00 U100.00\nok\necho:Now fresh file: PRINTCON.GCO\nFile opened: PRINTCON.GCO Size: 103\nFile selected\nok\nok\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nDone printing file\n",
+          "fileName": "PRINTCON.GCO",
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          }
+        },
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\n",
+          "running": true,
+          "cycles": 1111810606,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    }
+  ]
+}

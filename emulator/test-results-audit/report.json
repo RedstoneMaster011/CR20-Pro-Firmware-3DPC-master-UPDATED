@@ -1,0 +1,169 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58623",
+  "generatedAt": "2026-07-16T13:24:12.805Z",
+  "suites": [
+    "boot",
+    "lcd",
+    "sd",
+    "usb",
+    "layout"
+  ],
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "name": "boot",
+      "status": "passed",
+      "durationMs": 1365,
+      "details": {
+        "firmwareBytes": 165696,
+        "cycles": 120700451,
+        "starts": 1
+      }
+    },
+    {
+      "name": "lcd",
+      "status": "passed",
+      "durationMs": 1051,
+      "details": {
+        "displayOn": true,
+        "receivedFrame": true,
+        "nonzeroBytes": 537,
+        "byteSum": 43437
+      }
+    },
+    {
+      "name": "sd",
+      "status": "passed",
+      "durationMs": 6339,
+      "details": {
+        "listing": "Begin file list\nDEMO.GCO 283\r\nEnd file list\nok\n",
+        "size": 283,
+        "progress": "echo:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\n",
+        "completed": "ok\necho:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nDone printing file",
+        "statusHash": 813871352,
+        "finishedHash": 2936773924
+      }
+    },
+    {
+      "name": "usb",
+      "status": "passed",
+      "durationMs": 20248,
+      "details": {
+        "axes": {
+          "x": 118.50000000000023,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "starts": 1,
+        "printingHash": 943705387,
+        "finishedHash": 3729535412
+      }
+    },
+    {
+      "name": "layout",
+      "status": "passed",
+      "durationMs": 15221,
+      "details": {
+        "desktop": {
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "scrollHeight": 960,
+          "clientHeight": 960,
+          "camera": [
+            9.200000000000001,
+            6.599999999999999,
+            12.499999999999998
+          ],
+          "pixels": {
+            "width": 950,
+            "height": 960,
+            "opaque": 912000,
+            "varied": 15549
+          }
+        },
+        "mobile": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "commandBottom": 1321.4375,
+          "footerTop": 1337.4375,
+          "controls": [
+            {
+              "tag": "CANVAS",
+              "left": 0,
+              "right": 390,
+              "width": 390
+            },
+            {
+              "tag": "BUTTON",
+              "left": 297,
+              "right": 333,
+              "width": 36
+            },
+            {
+              "tag": "BUTTON",
+              "left": 340,
+              "right": 376,
+              "width": 36
+            },
+            {
+              "tag": "CANVAS",
+              "left": 24,
+              "right": 286,
+              "width": 262
+            },
+            {
+              "tag": "BUTTON",
+              "left": 312,
+              "right": 372,
+              "width": 60
+            },
+            {
+              "tag": "INPUT",
+              "left": 214,
+              "right": 318.75,
+              "width": 104.75
+            },
+            {
+              "tag": "BUTTON",
+              "left": 328.765625,
+              "right": 376,
+              "width": 47.234375
+            },
+            {
+              "tag": "INPUT",
+              "left": 366,
+              "right": 367,
+              "width": 1
+            },
+            {
+              "tag": "INPUT",
+              "left": 14,
+              "right": 311,
+              "width": 297
+            },
+            {
+              "tag": "BUTTON",
+              "left": 318,
+              "right": 376,
+              "width": 58
+            }
+          ],
+          "pixels": {
+            "width": 390,
+            "height": 439,
+            "opaque": 171210,
+            "varied": 3412
+          }
+        },
+        "movedCamera": [
+          2.3010858655924715,
+          6.600000000000003,
+          15.349104333451221
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58657",
+  "generatedAt": "2026-07-16T15:07:27.732Z",
+  "suites": [
+    "menu-print"
+  ],
+  "passed": 0,
+  "failed": 1,
+  "results": [
+    {
+      "name": "menu-print",
+      "status": "failed",
+      "durationMs": 184415,
+      "error": "page.waitForFunction: Timeout 120000ms exceeded.",
+      "details": {
+        "stage": "complete heating and homing",
+        "menuPrint": {
+          "serialTail": ":32.50 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:33.07 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:33.75 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:34.17 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:34.87 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:35.33 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:35.67 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:36.33 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:36.67 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:37.33 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:37.67 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:38.17 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:38.67 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:39.19 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:39.67 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:40.17 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:40.59 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:41.18 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:41.47 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:42.06 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:42.35 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:42.94 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:43.38 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:43.82 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:44.41 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:44.71 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:45.26 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:45.79 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:46.09 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:46.58 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:47.11 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:47.50 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:47.89 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:48.42 /50.00 @:0 B@:127 W:?\n T:25.00 /0.00 B:48.78 /50.00 @:0 B@:127 W:?\necho:busy: processing\n T:25.00 /0.00 B:49.21 /50.00 @:0 B@:127 W:9\n",
+          "cycles": 1212769000,
+          "inputEvents": 0,
+          "encoderPosition": 0,
+          "bed": 49.067461187773226,
+          "bedDuty": 1,
+          "led": {
+            "r": 244,
+            "g": 0,
+            "b": 255
+          }
+        },
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58657\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2120  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\n",
+          "running": true,
+          "cycles": 102197315,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    }
+  ]
+}

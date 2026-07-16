@@ -1,0 +1,69 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58642",
+  "generatedAt": "2026-07-16T14:11:09.183Z",
+  "suites": [
+    "print-controls"
+  ],
+  "passed": 1,
+  "failed": 0,
+  "results": [
+    {
+      "name": "print-controls",
+      "status": "passed",
+      "durationMs": 94743,
+      "details": {
+        "defaults": {
+          "betterBed": 1,
+          "overrideEnabled": 0,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        },
+        "persisted": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        },
+        "early": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 70,
+          "fan": 255,
+          "hotendTarget": 200,
+          "bedTarget": 60
+        },
+        "restored": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 64,
+          "hotendTarget": 200,
+          "bedTarget": 60
+        },
+        "cooled": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        }
+      }
+    }
+  ]
+}

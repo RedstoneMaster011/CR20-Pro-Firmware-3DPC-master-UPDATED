@@ -1,0 +1,111 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58642",
+  "generatedAt": "2026-07-16T13:58:34.771Z",
+  "suites": [
+    "sd",
+    "usb",
+    "print-controls"
+  ],
+  "passed": 2,
+  "failed": 1,
+  "results": [
+    {
+      "name": "sd",
+      "status": "passed",
+      "durationMs": 12443,
+      "details": {
+        "listing": "Begin file list\nDEMO.GCO 283\r\nEnd file list\nok\n",
+        "size": 283,
+        "progress": "echo:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\n",
+        "completed": "ok\necho:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nDone printing file",
+        "statusHash": 813871352,
+        "finishedHash": 2936773924,
+        "finishedScreen": {
+          "pointer": 5522,
+          "target": 13461
+        }
+      }
+    },
+    {
+      "name": "usb",
+      "status": "passed",
+      "durationMs": 32308,
+      "details": {
+        "axes": {
+          "x": 118.50000000000023,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "starts": 1,
+        "printingHash": 2915426623,
+        "finishedHash": 63869204,
+        "finishedScreen": {
+          "pointer": 5522,
+          "target": 13461
+        }
+      }
+    },
+    {
+      "name": "print-controls",
+      "status": "failed",
+      "durationMs": 90103,
+      "error": "SD temperatures were not overridden to 200/60",
+      "details": {
+        "temperatures": "echo:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nok T:86.24 /0.00 B:39.00 /60.00 @:127 B@:127\n",
+        "stage": "first layer values",
+        "controlled": {
+          "serialTail": " Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:Settings Stored (629 bytes; crc 29142)\nok\necho:V70 stored settings retrieved (629 bytes; crc 29142)\necho:  G21    ; Units in mm (mm)\necho:  M149 C ; Units in Celsius\n\necho:Filament settings: Disabled\necho:  M200 D1.75\necho:  M200 D0\necho:Steps per unit:\necho: M92 X80.00 Y80.00 Z400.00 E93.00\necho:Maximum feedrates (units/s):\necho:  M203 X250.00 Y250.00 Z5.00 E25.00\necho:Maximum Acceleration (units/s2):\necho:  M201 X500.00 Y500.00 Z100.00 E1000.00\necho:Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>\necho:  M204 P500.00 R500.00 T1000.00\necho:Advanced: B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> X<max_x_jerk> Y<max_y_jerk> Z<max_z_jerk> E<max_e_jerk>\necho:  M205 B20000.00 S0.00 T0.00 X10.00 Y10.00 Z0.40 E5.00\necho:Home offset:\necho:  M206 X0.00 Y0.00 Z0.00\necho:Auto Bed Leveling:\necho:  M420 S0 Z0.00\necho:Material heatup parameters:\necho:  M145 S0 H200 B60 F0\necho:  M145 S1 H230 B80 F0\necho:PID settings:\necho:  M301 P20.84 I1.96 D55.47\necho:Power-Loss Recovery:\necho:  M413 S1\necho:Z-Probe Offset (mm):\necho:  M851 Z0.00\necho:Linear Advance:\necho:  M900 K0.00\necho:Filament load/unload lengths:\necho:  M603 L0.00 U100.00\nok\necho:SD card ok\necho:V70 stored settings retrieved (629 bytes; crc 29142)\necho:  G21    ; Units in mm (mm)\necho:  M149 C ; Units in Celsius\n\necho:Filament settings: Disabled\necho:  M200 D1.75\necho:  M200 D0\necho:Steps per unit:\necho: M92 X80.00 Y80.00 Z400.00 E93.00\necho:Maximum feedrates (units/s):\necho:  M203 X250.00 Y250.00 Z5.00 E25.00\necho:Maximum Acceleration (units/s2):\necho:  M201 X500.00 Y500.00 Z100.00 E1000.00\necho:Acceleration (units/s2): P<print_accel> R<retract_accel> T<travel_accel>\necho:  M204 P500.00 R500.00 T1000.00\necho:Advanced: B<min_segment_time_us> S<min_feedrate> T<min_travel_feedrate> X<max_x_jerk> Y<max_y_jerk> Z<max_z_jerk> E<max_e_jerk>\necho:  M205 B20000.00 S0.00 T0.00 X10.00 Y10.00 Z0.40 E5.00\necho:Home offset:\necho:  M206 X0.00 Y0.00 Z0.00\necho:Auto Bed Leveling:\necho:  M420 S0 Z0.00\necho:Material heatup parameters:\necho:  M145 S0 H200 B60 F0\necho:  M145 S1 H230 B80 F0\necho:PID settings:\necho:  M301 P20.84 I1.96 D55.47\necho:Power-Loss Recovery:\necho:  M413 S1\necho:Z-Probe Offset (mm):\necho:  M851 Z0.00\necho:Linear Advance:\necho:  M900 K0.00\necho:Filament load/unload lengths:\necho:  M603 L0.00 U100.00\nok\necho:Now fresh file: PRINTCON.GCO\nFile opened: PRINTCON.GCO Size: 103\nFile selected\nok\nok\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nok T:86.24 /0.00 B:39.00 /60.00 @:127 B@:127\nDone printing file\n",
+          "fileName": "PRINTCON.GCO",
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          }
+        },
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58642\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2120  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nBegin file list\nDEMO.GCO 283\r\nEnd file list\nok\necho:Now fresh file: DEMO.GCO\nFile opened: DEMO.GCO Size: 283\nFile selected\nok\nok\necho:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nDone printing file\n",
+          "running": true,
+          "cycles": 877314418,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#151718" />
+    <link rel="icon" href="data:," />
+    <title>CR-20 Pro Firmware Emulator</title>
+  </head>
+  <body>
+    <main id="app">
+      <section class="printer-stage" aria-label="Virtual CR-20 Pro">
+        <div id="printer-canvas"></div>
+        <header class="stage-header">
+          <div>
+            <span class="eyebrow">VIRTUAL HARDWARE</span>
+            <h1>CR-20 Pro</h1>
+          </div>
+          <div class="run-state" id="run-state" data-state="booting">
+            <span class="state-dot"></span>
+            <span id="run-state-label">Booting firmware</span>
+          </div>
+        </header>
+        <div class="axis-readout" aria-label="Virtual axis positions">
+          <span>X <strong id="axis-x">0.00</strong></span>
+          <span>Y <strong id="axis-y">0.00</strong></span>
+          <span>Z <strong id="axis-z">0.00</strong></span>
+          <span>E <strong id="axis-e">0.00</strong></span>
+        </div>
+      </section>
+
+      <aside class="control-panel">
+        <header class="panel-header">
+          <div>
+            <span class="eyebrow">LIVE ATMEGA2560</span>
+            <h2 id="firmware-version">v2.3</h2>
+          </div>
+          <div class="panel-actions">
+            <button class="icon-button" id="pause-button" type="button" title="Pause emulator" aria-label="Pause emulator">
+              <span aria-hidden="true">Ⅱ</span>
+            </button>
+            <button class="icon-button" id="reset-button" type="button" title="Reset firmware" aria-label="Reset firmware">
+              <span aria-hidden="true">↻</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="display-area" aria-label="Printer display and encoder">
+          <div class="lcd-housing">
+            <canvas id="lcd" width="128" height="64" aria-label="CR-20 Pro LCD output"></canvas>
+            <div class="lcd-reflection"></div>
+          </div>
+          <div class="encoder-area">
+            <div class="encoder-controls">
+              <button id="encoder-up" class="encoder-step encoder-step-up" type="button" aria-label="Rotate encoder up one notch" title="Rotate up one notch">
+                <span aria-hidden="true">&#9650;</span>
+              </button>
+              <button id="encoder" class="encoder" type="button" aria-label="Press encoder; scroll over it to rotate" title="Click to press. Scroll to rotate.">
+                <span class="encoder-ridge"></span>
+              </button>
+              <button id="encoder-down" class="encoder-step encoder-step-down" type="button" aria-label="Rotate encoder down one notch" title="Rotate down one notch">
+                <span aria-hidden="true">&#9660;</span>
+              </button>
+            </div>
+            <div class="encoder-label">SELECT</div>
+          </div>
+        </section>
+
+        <section class="telemetry" aria-label="Virtual hardware telemetry">
+          <div class="meter">
+            <span>Nozzle</span>
+            <strong><span id="hotend-temp">25.0</span>°C</strong>
+            <div class="meter-track"><span id="hotend-bar"></span></div>
+          </div>
+          <div class="meter">
+            <span>Bed</span>
+            <strong><span id="bed-temp">25.0</span>°C</strong>
+            <div class="meter-track"><span id="bed-bar"></span></div>
+          </div>
+          <div class="meter compact">
+            <span>Fan</span>
+            <strong id="fan-value">0%</strong>
+          </div>
+          <div class="meter compact">
+            <span>Speed</span>
+            <label class="speed-control">
+              <input id="speed" type="range" min="0.25" max="8" value="1" step="0.25" aria-label="Emulator speed" />
+              <strong id="speed-value">1.00×</strong>
+            </label>
+          </div>
+        </section>
+
+        <section class="console-section">
+          <div class="section-title">
+            <h3>Serial console</h3>
+            <button id="clear-console" class="text-button" type="button">Clear</button>
+          </div>
+          <div class="sd-control">
+            <span>Virtual SD <strong id="sd-file-name">DEMO.GCO</strong></span>
+            <label class="text-button file-button">
+              Mount G-code
+              <input id="sd-file-input" type="file" accept=".gcode,.gco,.gc" />
+            </label>
+          </div>
+          <pre id="serial-output" aria-live="polite"></pre>
+          <form id="serial-form">
+            <label for="serial-input">G-code command</label>
+            <div class="command-row">
+              <input id="serial-input" type="text" autocomplete="off" spellcheck="false" placeholder="M115" />
+              <button type="submit">Send</button>
+            </div>
+          </form>
+        </section>
+
+        <footer class="panel-footer">
+          <span id="firmware-status">Loading CR-20 Pro Update.hex</span>
+          <span>EEPROM persists in this browser</span>
+        </footer>
+      </aside>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

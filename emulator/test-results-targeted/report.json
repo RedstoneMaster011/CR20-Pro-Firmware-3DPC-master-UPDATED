@@ -1,0 +1,194 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58634",
+  "generatedAt": "2026-07-16T13:44:46.016Z",
+  "suites": [
+    "thermal",
+    "benchy",
+    "print-controls",
+    "layout"
+  ],
+  "passed": 1,
+  "failed": 3,
+  "results": [
+    {
+      "name": "thermal",
+      "status": "passed",
+      "durationMs": 16555,
+      "details": {
+        "before": {
+          "hotend": 25,
+          "bed": 25.00184811501112
+        },
+        "temperatures": {
+          "hotend": 39.136299532558034,
+          "bed": 26.08026387089907
+        },
+        "duties": {
+          "hotend": 0.4755250678510038,
+          "bed": 1,
+          "fan": 0.5046450246348603
+        },
+        "dutyPeaks": {
+          "hotend": 1,
+          "bed": 1,
+          "fan": 0.5184117234637148
+        }
+      }
+    },
+    {
+      "name": "benchy",
+      "status": "failed",
+      "durationMs": 20733,
+      "error": "Bundled Benchy was not mounted at startup",
+      "details": {
+        "fileName": "3DBENCHY.GCO",
+        "imageBytes": 5767168,
+        "sectors": 11264,
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nok\nok\nok\nok\nok\nok\n",
+          "running": true,
+          "cycles": 348790307,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    },
+    {
+      "name": "print-controls",
+      "status": "failed",
+      "durationMs": 157754,
+      "error": "page.waitForFunction: Timeout 120000ms exceeded.",
+      "details": {
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nok\nok\nok\nok\nok\nok\n",
+          "running": true,
+          "cycles": 1294285828,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    },
+    {
+      "name": "layout",
+      "status": "failed",
+      "durationMs": 13053,
+      "error": "Bed did not follow the Y axis",
+      "details": {
+        "traceSegments": 1,
+        "fanBefore": 56.140365952162135,
+        "fanAfter": 57.06036595216214,
+        "bedZ": -0.027232200000000262,
+        "carriageX": 0.01512900000000002,
+        "gantryY": 2.1321032,
+        "probeY": -0.9017728000000003,
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58634\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2133  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nok\nok\nok\nok\nok\nok\n",
+          "running": true,
+          "cycles": 1378216718,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    }
+  ]
+}

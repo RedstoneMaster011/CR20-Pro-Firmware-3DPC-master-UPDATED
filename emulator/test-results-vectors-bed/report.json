@@ -1,0 +1,246 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58657",
+  "generatedAt": "2026-07-16T15:24:54.603Z",
+  "suites": [
+    "homing",
+    "layout"
+  ],
+  "passed": 1,
+  "failed": 1,
+  "results": [
+    {
+      "name": "homing",
+      "status": "failed",
+      "durationMs": 37924,
+      "error": "Firmware restarted after G28 and M420",
+      "details": {
+        "startsBefore": 1,
+        "leveling": "echo:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70",
+        "after": {
+          "axes": {
+            "x": 156.98749999997602,
+            "y": 127.00000000000216,
+            "z": 10.117499999999978,
+            "e": 0
+          },
+          "extents": {
+            "x": {
+              "min": -0.012500000018153615,
+              "max": 156.98749999997602
+            },
+            "y": {
+              "min": -0.012500000018153615,
+              "max": 127.00000000000216
+            },
+            "z": {
+              "min": 0.11749999999984906,
+              "max": 20.000000000000853
+            },
+            "e": {
+              "min": 0,
+              "max": 0
+            }
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "commands": [
+              160,
+              90,
+              10,
+              90,
+              10,
+              90,
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 2
+          },
+          "starts": 2,
+          "unexpectedResets": []
+        },
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58657\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2120  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nX:157.00 Y:127.00 Z:10.00 E:0.00 Count X:12560 Y:10160 Z:4000\nstart\necho:Marlin v2.3 - 58657\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2120  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:Invalid mesh.\nError:Failed to enable Bed Leveling\necho:Bed Leveling OFF\necho:Fade Height OFF\nok\n",
+          "running": true,
+          "cycles": 541498380,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 156.98749999997602,
+            "y": 127.00000000000216,
+            "z": 10.117499999999978,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              90,
+              10,
+              90,
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 2
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    },
+    {
+      "name": "layout",
+      "status": "passed",
+      "durationMs": 18255,
+      "details": {
+        "desktop": {
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "scrollHeight": 960,
+          "clientHeight": 960,
+          "camera": [
+            9.200000000000001,
+            6.599999999999999,
+            12.499999999999998
+          ],
+          "pixels": {
+            "width": 950,
+            "height": 960,
+            "opaque": 912000,
+            "varied": 19480
+          }
+        },
+        "mobile": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "commandBottom": 1306.4375,
+          "footerTop": 1322.4375,
+          "controls": [
+            {
+              "tag": "CANVAS",
+              "left": 0,
+              "right": 390,
+              "width": 390
+            },
+            {
+              "tag": "BUTTON",
+              "left": 297,
+              "right": 333,
+              "width": 36
+            },
+            {
+              "tag": "BUTTON",
+              "left": 340,
+              "right": 376,
+              "width": 36
+            },
+            {
+              "tag": "CANVAS",
+              "left": 24,
+              "right": 256,
+              "width": 232
+            },
+            {
+              "tag": "BUTTON",
+              "left": 279,
+              "right": 307,
+              "width": 28
+            },
+            {
+              "tag": "BUTTON",
+              "left": 315,
+              "right": 375,
+              "width": 60
+            },
+            {
+              "tag": "BUTTON",
+              "left": 279,
+              "right": 307,
+              "width": 28
+            },
+            {
+              "tag": "INPUT",
+              "left": 214,
+              "right": 318.75,
+              "width": 104.75
+            },
+            {
+              "tag": "BUTTON",
+              "left": 328.765625,
+              "right": 376,
+              "width": 47.234375
+            },
+            {
+              "tag": "INPUT",
+              "left": 366,
+              "right": 367,
+              "width": 1
+            },
+            {
+              "tag": "INPUT",
+              "left": 14,
+              "right": 311,
+              "width": 297
+            },
+            {
+              "tag": "BUTTON",
+              "left": 318,
+              "right": 376,
+              "width": 58
+            }
+          ],
+          "pixels": {
+            "width": 390,
+            "height": 439,
+            "opaque": 171210,
+            "varied": 4219
+          }
+        },
+        "movedCamera": [
+          2.3010858655924715,
+          6.600000000000003,
+          15.349104333451221
+        ],
+        "mechanism": {
+          "traceSegments": 1,
+          "fanBefore": 17.559999999999803,
+          "fanAfter": 51.159999999999876,
+          "bedZ": -1.7049536021936822,
+          "carriageX": 0.12509632006138532,
+          "gantryY": 2.219964728744543,
+          "probeY": -1.029999705292549
+        },
+        "bedTravel": {
+          "home": -0.30499999999999994,
+          "center": -1.48,
+          "maximum": -2.6550000000000002
+        }
+      }
+    }
+  ]
+}

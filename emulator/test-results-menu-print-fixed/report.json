@@ -1,0 +1,60 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58657",
+  "generatedAt": "2026-07-16T14:44:41.219Z",
+  "suites": [
+    "menu-print"
+  ],
+  "passed": 0,
+  "failed": 1,
+  "results": [
+    {
+      "name": "menu-print",
+      "status": "failed",
+      "durationMs": 135402,
+      "error": "page.waitForFunction: Timeout 120000ms exceeded.",
+      "details": {
+        "diagnostics": {
+          "serialTail": "start\necho:Marlin v2.3 - 58657\n\necho: Last Updated: 2026-07-13 | Author: (RedstoneMaster01)\necho:Compiled: Jul 16 2026\necho: Free Memory: 2120  PlannerBufferBytes: 1376\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\necho:SD card ok\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\nLoading settings from SD\necho:EEPROM version mismatch (EEPROM=? Marlin=V70)\necho:Hardcoded Default Settings Loaded\n",
+          "running": true,
+          "cycles": 1574378642,
+          "serialQueue": "",
+          "uart": {
+            "rxBusy": false,
+            "rxEnable": true,
+            "status": 98
+          },
+          "axes": {
+            "x": 117.5,
+            "y": 117.5,
+            "z": 10,
+            "e": 0
+          },
+          "probe": {
+            "deployed": false,
+            "triggered": false,
+            "command": 90,
+            "commands": [
+              160,
+              90,
+              10,
+              140,
+              130,
+              140,
+              90
+            ],
+            "triggerCount": 0
+          },
+          "sd": {
+            "fileName": "DEMO.GCO",
+            "idle": false,
+            "selected": false,
+            "multiReadBlock": null,
+            "queuedResponses": 0
+          },
+          "sdLabel": "DEMO.GCO"
+        }
+      }
+    }
+  ]
+}

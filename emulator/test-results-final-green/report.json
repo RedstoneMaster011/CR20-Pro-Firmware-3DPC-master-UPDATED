@@ -1,0 +1,419 @@
+{
+  "firmware": "CR-20 Pro Update.hex",
+  "version": "v2.3 - 58642",
+  "generatedAt": "2026-07-16T14:15:39.757Z",
+  "suites": [
+    "boot",
+    "lcd",
+    "encoder",
+    "controls",
+    "serial",
+    "motion",
+    "homing",
+    "thermal",
+    "sd",
+    "usb",
+    "mount",
+    "benchy",
+    "print-controls",
+    "eeprom",
+    "layout"
+  ],
+  "passed": 15,
+  "failed": 0,
+  "results": [
+    {
+      "name": "boot",
+      "status": "passed",
+      "durationMs": 1422,
+      "details": {
+        "firmwareBytes": 165986,
+        "cycles": 112265513,
+        "starts": 1
+      }
+    },
+    {
+      "name": "lcd",
+      "status": "passed",
+      "durationMs": 1969,
+      "details": {
+        "displayOn": true,
+        "receivedFrame": true,
+        "nonzeroBytes": 537,
+        "byteSum": 43710
+      }
+    },
+    {
+      "name": "encoder",
+      "status": "passed",
+      "durationMs": 6800,
+      "details": {
+        "statusHash": 253740570,
+        "menuHash": 2278227254,
+        "rotatedHash": 1948358994
+      }
+    },
+    {
+      "name": "controls",
+      "status": "passed",
+      "durationMs": 23042,
+      "details": {
+        "speed": {
+          "value": 2,
+          "label": "2.00×"
+        },
+        "pausedCycles": 201801993,
+        "reset": {
+          "running": true,
+          "speed": 4,
+          "starts": 1,
+          "state": "Firmware running"
+        }
+      }
+    },
+    {
+      "name": "serial",
+      "status": "passed",
+      "durationMs": 561,
+      "details": {
+        "response": "FIRMWARE_NAME:Marlin v2.3 - 58642 (print ETA + negative value support) SOURCE_CODE_URL:https://github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:CR-20 Pro EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff\nCap:SERIAL_XON_XOFF:0\r\nCap:BINARY_FILE_TRANSFER:0\r\nCap:EEPROM:1\r\nCap:VOLUMETRIC:1\r\nCap:AUTOREPORT_TEMP:1\r\nCap:PROGRESS:0\r\nCap:PRINT_JOB:1\r\nCap:AUTOLEVEL:1\r\nCap:Z_PROBE:1\r\nCap:LEVELING_DATA:1\r\nCap:BUILD_PERCENT:1\r\nCap:SOFTWARE_POWER:0\r\nCap:TOGGLE_LIGHTS:1\r\nCap:CASE_LIGH"
+      }
+    },
+    {
+      "name": "motion",
+      "status": "passed",
+      "durationMs": 2656,
+      "details": {
+        "before": {
+          "x": 117.5,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "after": {
+          "x": 120.50000000000068,
+          "y": 119.50000000000045,
+          "z": 10.999999999999801,
+          "e": 0
+        },
+        "returned": {
+          "x": 117.5,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        }
+      }
+    },
+    {
+      "name": "homing",
+      "status": "passed",
+      "durationMs": 22943,
+      "details": {
+        "before": {
+          "x": 117.5,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "response": "echo:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\necho:busy: processing\nX:157.00 Y:127.00 Z:10.00 E:0.00 Count X:12560 Y:10160 Z:4000\nok",
+        "axes": {
+          "x": 156.999999999976,
+          "y": 126.98750000000216,
+          "z": 10.119999999999978,
+          "e": 0
+        },
+        "extents": {
+          "x": {
+            "min": -0.012500000018153615,
+            "max": 156.999999999976
+          },
+          "y": {
+            "min": -0.012500000018153615,
+            "max": 126.98750000000216
+          },
+          "z": {
+            "min": 0.11749999999984906,
+            "max": 20.000000000000853
+          },
+          "e": {
+            "min": 0,
+            "max": 0
+          }
+        },
+        "probe": {
+          "deployed": false,
+          "triggered": false,
+          "commands": [
+            160,
+            90,
+            10,
+            90,
+            10,
+            90
+          ],
+          "triggerCount": 2
+        }
+      }
+    },
+    {
+      "name": "thermal",
+      "status": "passed",
+      "durationMs": 14758,
+      "details": {
+        "before": {
+          "hotend": 25,
+          "bed": 25.00866242410298
+        },
+        "temperatures": {
+          "hotend": 40.34484153642344,
+          "bed": 26.041583542757127
+        },
+        "duties": {
+          "hotend": 0.419752299366598,
+          "bed": 1,
+          "fan": 0.5060429683799482
+        },
+        "dutyPeaks": {
+          "hotend": 1,
+          "bed": 1,
+          "fan": 0.5080132806230997
+        }
+      }
+    },
+    {
+      "name": "sd",
+      "status": "passed",
+      "durationMs": 6079,
+      "details": {
+        "listing": "Begin file list\nDEMO.GCO 283\r\nEnd file list\nok\n",
+        "size": 283,
+        "progress": "echo:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\n",
+        "completed": "ok\necho:busy: processing\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nSD printing byte 200/283\r\nok\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\necho: cold extrusion prevented\nDone printing file",
+        "statusHash": 3416350080,
+        "finishedHash": 347764252,
+        "finishedScreen": {
+          "pointer": 5522,
+          "target": 13461
+        }
+      }
+    },
+    {
+      "name": "usb",
+      "status": "passed",
+      "durationMs": 17681,
+      "details": {
+        "axes": {
+          "x": 118.50000000000023,
+          "y": 117.5,
+          "z": 10,
+          "e": 0
+        },
+        "starts": 1,
+        "printingHash": 2915426623,
+        "finishedHash": 63869204,
+        "finishedScreen": {
+          "pointer": 5522,
+          "target": 13461
+        }
+      }
+    },
+    {
+      "name": "mount",
+      "status": "passed",
+      "durationMs": 13861,
+      "details": {
+        "fileName": "MOUNTEDT.GCO",
+        "listing": "Begin file list\nMOUNTEDT.GCO 45\r\nEnd file list\nok\n"
+      }
+    },
+    {
+      "name": "benchy",
+      "status": "passed",
+      "durationMs": 11092,
+      "details": {
+        "fileName": "3DBENCHY.GCO",
+        "imageBytes": 5767168,
+        "sectors": 11264,
+        "listing": "Begin file list\n3DBENCHY.GCO 5337861\r\nEnd file list\nok\n"
+      }
+    },
+    {
+      "name": "print-controls",
+      "status": "passed",
+      "durationMs": 63179,
+      "details": {
+        "defaults": {
+          "betterBed": 1,
+          "overrideEnabled": 0,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        },
+        "persisted": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        },
+        "early": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 70,
+          "fan": 255,
+          "hotendTarget": 200,
+          "bedTarget": 60
+        },
+        "restored": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 64,
+          "hotendTarget": 200,
+          "bedTarget": 60
+        },
+        "cooled": {
+          "betterBed": 1,
+          "overrideEnabled": 1,
+          "overrideNozzle": 200,
+          "overrideBed": 60,
+          "speed": 100,
+          "fan": 0,
+          "hotendTarget": 0,
+          "bedTarget": 0
+        }
+      }
+    },
+    {
+      "name": "eeprom",
+      "status": "passed",
+      "durationMs": 18913,
+      "details": {
+        "changedBytes": 645,
+        "checksum": 2077904030
+      }
+    },
+    {
+      "name": "layout",
+      "status": "passed",
+      "durationMs": 16030,
+      "details": {
+        "desktop": {
+          "scrollWidth": 1440,
+          "clientWidth": 1440,
+          "scrollHeight": 960,
+          "clientHeight": 960,
+          "camera": [
+            9.200000000000001,
+            6.599999999999999,
+            12.499999999999998
+          ],
+          "pixels": {
+            "width": 950,
+            "height": 960,
+            "opaque": 912000,
+            "varied": 15762
+          }
+        },
+        "mobile": {
+          "scrollWidth": 390,
+          "clientWidth": 390,
+          "commandBottom": 1321.4375,
+          "footerTop": 1337.4375,
+          "controls": [
+            {
+              "tag": "CANVAS",
+              "left": 0,
+              "right": 390,
+              "width": 390
+            },
+            {
+              "tag": "BUTTON",
+              "left": 297,
+              "right": 333,
+              "width": 36
+            },
+            {
+              "tag": "BUTTON",
+              "left": 340,
+              "right": 376,
+              "width": 36
+            },
+            {
+              "tag": "CANVAS",
+              "left": 24,
+              "right": 286,
+              "width": 262
+            },
+            {
+              "tag": "BUTTON",
+              "left": 312,
+              "right": 372,
+              "width": 60
+            },
+            {
+              "tag": "INPUT",
+              "left": 214,
+              "right": 318.75,
+              "width": 104.75
+            },
+            {
+              "tag": "BUTTON",
+              "left": 328.765625,
+              "right": 376,
+              "width": 47.234375
+            },
+            {
+              "tag": "INPUT",
+              "left": 366,
+              "right": 367,
+              "width": 1
+            },
+            {
+              "tag": "INPUT",
+              "left": 14,
+              "right": 311,
+              "width": 297
+            },
+            {
+              "tag": "BUTTON",
+              "left": 318,
+              "right": 376,
+              "width": 58
+            }
+          ],
+          "pixels": {
+            "width": 390,
+            "height": 439,
+            "opaque": 171210,
+            "varied": 3412
+          }
+        },
+        "movedCamera": [
+          2.3010858655924715,
+          6.600000000000003,
+          15.349104333451221
+        ],
+        "mechanism": {
+          "traceSegments": 1,
+          "fanBefore": 749.5857070144541,
+          "fanAfter": 783.1857070144554,
+          "bedZ": -0.2249535575804069,
+          "carriageX": 0.12509636467466037,
+          "gantryY": 2.2199647376671985,
+          "probeY": -1.029999705292549
+        }
+      }
+    }
+  ]
+}
