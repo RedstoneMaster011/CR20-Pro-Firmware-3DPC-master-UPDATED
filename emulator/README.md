@@ -10,7 +10,7 @@ npm install
 npm run dev
 ```
 
-Open the URL printed by Vite. Click the encoder knob to press it and use the mouse wheel over the knob to rotate it; the Up and Down arrow keys also rotate the focused knob. G-code can be sent through the serial console. The virtual SD card starts with the bundled `CCR20PRO_3DBenchy.gcode` as `3DBENCH.GCO`; use **Mount G-code** to replace it with another local file. The speed control runs from `0.25x` through `8x` when the computer can emulate the requested AVR rate.
+Open the URL printed by Vite. Click the encoder knob to press it and use the mouse wheel over the knob to rotate it; the on-screen arrow buttons and the Up and Down arrow keys rotate it one notch. G-code can be sent through the serial console. The virtual SD card starts with the bundled `CCR20PRO_3DBenchy.gcode` as `3DBENCHY.GCO`; use **Mount G-code** to replace it with another local file. The speed control runs from `0.25x` through `250x`. Turbo settings run as fast as the host computer can execute the AVR instruction stream while keeping the interface responsive.
 
 The 3D view follows the physical bed-slinger arrangement: X moves the print head, Y moves the bed, and Z raises the gantry. The BLTouch pin deploys with firmware commands, the part-cooling fan rotates around its shaft, and accepted extruder steps leave orange filament paths attached to the moving bed. Resetting the emulator or mounting another file clears the rendered print.
 
