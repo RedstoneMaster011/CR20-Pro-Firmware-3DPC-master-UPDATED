@@ -1,4 +1,4 @@
-# CR20-Pro-Firmware-3DPC v2.3
+# CR20-Pro-Firmware-3DPC v2.3 
 
 Updated Marlin firmware for the CR-20 Pro, created by RedstoneMaster01.
 
