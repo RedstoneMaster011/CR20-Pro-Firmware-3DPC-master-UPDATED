@@ -10,7 +10,7 @@ Follow this order for every print:
 
 1. Slice and preview the model for the CR-20 Pro and the loaded material.
 2. Inspect the printer, filament path, BLTouch, wiring, and G-code file.
-3. Clean the cool build plate and apply a thin layer of washable purple glue.
+3. Clean the cool build plate with dish soap and apply a thin layer of washable purple glue.
 4. Preheat as needed, load or purge the filament, and clean the nozzle.
 5. Level the bed once, either with `Motion > Level bed` or with `G28` followed by `G29` in the file.
 6. Start the job from the SD card or USB host.
